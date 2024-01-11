@@ -16,9 +16,9 @@ const john = await createUser("john@gmail.com", "John", johnPass, "John", "Johns
 const jack = await createUser("jack@gmail.com", "Jack", jackPass, "Jack", "Jackson")
 const jill = await createUser("jill@gmail.com", "Jill", jillPass, "Jill", "Jillson", true)
 
-const culture = await(createInterests)("Cultural Exploration", "An interest in learning about different cultures.", "https://imgur.com/oCsUrNk")
-const outdoor = await(createInterests)("Outdoor Adventure", "Seeking adventure outdoors like hiking.", "https://imgur.com/AZuhonI")
-const relaxing = await(createInterests)("Relaxation", "Unwind and relax.", "https://imgur.com/IK1iLPR")
+const culture = await createInterests("Cultural Exploration", "An interest in learning about different cultures.", "https://imgur.com/oCsUrNk")
+const outdoor = await createInterests("Outdoor Adventure", "Seeking adventure outdoors like hiking.", "https://imgur.com/AZuhonI")
+const relaxing = await createInterests("Relaxation", "Unwind and relax.", "https://imgur.com/IK1iLPR")
 
 const paris = await createDestinations("Paris", "France", "City of Light, iconic landmarks, exquisite cuisine.", "April-June", 200, "https://imgur.com/sLwRvot", "Euro (€)", "French")
 const bali = await createDestinations("Bali", "Indonesia", "Tropical haven of beaches, temples, and vibrant culture.", "May-September", 50, "https://imgur.com/UfnXuz9", "Indonesian Rupiah (IDR)", "")
@@ -26,7 +26,7 @@ const reykjavik = await createDestinations("Reykjavik", "Iceland", "A paradise f
 
 const eiffel = await createAttractions("Eiffel Tower", "https://imgur.com/romvYx4", paris.id)
 const louvre = await createAttractions("Louvre", "https://imgur.com/yVYUYIB", paris.id)
-const notreDame = await(createAttractions)("Notre Dame", "https://imgur.com/qNhgLHI", paris.id)
+const notreDame = await createAttractions("Notre Dame", "https://imgur.com/qNhgLHI", paris.id)
 
 const temple = await createAttractions("Uluwatu Temple", "https://imgur.com/txhMihx", bali.id)
 const monkey = await createAttractions("Ubud Monkey Forest", "https://imgur.com/v8zb4nN", bali.id)
