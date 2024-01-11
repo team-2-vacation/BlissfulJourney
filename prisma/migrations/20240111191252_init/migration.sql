@@ -1,4 +1,4 @@
--- CreateEnum
+git st-- CreateEnum
 CREATE TYPE "Type" AS ENUM ('WISHLIST', 'BOOKING');
 
 -- CreateTable
