@@ -28,7 +28,6 @@ model Destination {
   name              String        @db.VarChar(35)
   country           String        @db.VarChar(35)
   description       String     
-  main_attractions  String        @db.VarChar(100)
   time_to_visit     String
   average_cost      Int
   imageURL          String
