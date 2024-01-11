@@ -9,3 +9,60 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  username  String @unique
+  password  String
+  firstName String
+  lastName  String
+  isAdmin Boolean @default(false)
+}
+
+model Destination {
+  id      Int      @id @default(autoincrement())
+  name  String
+  country String
+  description String
+  main_attractions  String
+  time_to_visit String
+  average_cost  Int
+  imageURL  String
+  currency  String?
+  language  String?
+}
+
+model Interest {
+  id  Int @id @default(autoincrement())
+  name  String
+  description String
+  imageURL String
+}
+
+model Attraction {
+  id  Int @id @default(autoincrement())
+  name  String
+  destinationId Int
+}
+
+model Wishlist {
+  id  Int @id @default(autoincrement())
+  userId  Int
+  destinationId Int
+}
+
+model BookingsWishlist {
+  id  Int @id @default(autoincrement())
+  userId  Int
+  destinationId Int
+  type Type @default(WISHLIST)
+  booking_date  DateTime?
+  start_date  DateTime?
+  end_date  DateTime?
+}
+
+enum Type {
+  WISHLIST
+  BOOKING
+}
