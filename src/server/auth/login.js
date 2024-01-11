@@ -3,11 +3,7 @@ const router = express.Router();
 const prisma = require("../client");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 // /auth/login
-router.use("/login", require("./login"))
-
-// /auth/register
-router.use("/register", require("./register"))
-
-module.exports = router;
+router.post("/", (req, res, next))
