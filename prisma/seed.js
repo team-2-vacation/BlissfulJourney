@@ -2,8 +2,8 @@ const prisma = require("./client");
 const bcrypt = require("bcrypt");
 const {createUser} = require("./users");
 const {createInterests} = require("./interests");
-const { createDestinations } = require("./destinations");
-const { createAttractions } = require("./attractions");
+const {createDestinations} = require("./destinations");
+const {createAttractions} = require("./attractions");
 
 
 const seed = async() => {
