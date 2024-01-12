@@ -16,4 +16,4 @@ const getAllAttractions = async() => {
     return allAttractions
 }
 
-module.exports = {createAttractions, getAllAttractions}
+module.exports = {createAttractions, getAllAttractions} 

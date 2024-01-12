@@ -12,18 +12,32 @@ const createUser = async(email, username, password, firstName, lastName, isAdmin
             isAdmin
         }
     })
+    return user
 }
 
 const getAllUsers = async() => {
-    const allUsers = await prisma.user.findmany()
+    const allUsers = await prisma.user.findMany()
     return allUsers;
 }
 
-const getUser = async() => {
+const getUser = async( id ) => {
     const user = await prisma.user.findUnique({
         where: { id }
     })
     return user;
 }
 
-module.exports = {createUser, getAllUsers, getUser}
+const checkUserExistance = async(username, email) => {
+    const existingUser = await prisma.user.findFirst({
+        where: {
+          OR: [
+            { username: username },
+            { email: email },
+          ],
+        },
+      });
+      return existingUser
+}
+
+
+module.exports = {createUser, getAllUsers, getUser, checkUserExistance}
