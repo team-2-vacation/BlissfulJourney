@@ -15,8 +15,7 @@ router.post("/", async (req, res, next) => {
   const { email, username, password, firstName, lastName } = req.body;
 
   const existingUser = await checkUserExistance(username, email)
-  console.log("existinguser", existingUser)
-
+  
   if (existingUser) {
     return res.status(400).json({ error: "User already exists" });
   }
@@ -32,8 +31,14 @@ router.post("/", async (req, res, next) => {
       firstName,
       lastName
     );
-    console.log("user", user);
-    res.status(201).send(user);
+       
+    const token = jwt.sign(
+      { id: user.id, username: user.username, isAdmin: user.isAdmin },
+      process.env.JWT_SECRET
+    )
+    res.status(201).send({ token })
+
+    
   } catch (error) {
     console.error(error);
   }
