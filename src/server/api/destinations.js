@@ -23,7 +23,7 @@ router.get("/", async (req, res, next) => {
 
 // GET /api/destinations/:id Gets details of a specific destination
 router.get('/:id', async (req, res, next) => {
-  const destinationId = parseInt(req.params.id);
+  const destinationId = +req.params.id;
 
   try {
      const singleDestination= await prisma.destination.findUnique({
@@ -74,12 +74,23 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const destinationId = +req.params.id
     
-    const deletedDestination = await prisma.destination.delete({
-      where:{
-        "id":destinationId
-      },
-     });
-    res.send({ message: `The following destination was deleted: ${deletedDestination.name}` });
+    // Check for existing Attraction references
+    const attractions = await prisma.attraction.findMany({
+      where: {
+        destinationId: destinationId
+      }
+    });
+    if (attractions.length > 0) {
+      res.status(400).send({ message: "Deletion not allowed: Destination is referenced in Attraction." });
+    } else {
+      const deletedDestination = await prisma.destination.delete({
+        where:{
+          "id":destinationId
+        },
+       });
+      res.send({ message: `The following destination was deleted: ${deletedDestination.name}` });
+
+    }
   } catch (error) {
     console.error(error)
     next(error);
