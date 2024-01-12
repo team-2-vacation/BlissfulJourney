@@ -12,7 +12,7 @@ const createInterests = async(name, description, imageURL) => {
 
 const getAllInterests = async() => {
     const allInterests = await prisma.interest.findmany()
-    return allInterests
+    return allInterests;
 }
 
 module.exports = {createInterests, getAllInterests} 
