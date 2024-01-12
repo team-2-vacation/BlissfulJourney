@@ -5,8 +5,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Route, Routes } from "react-router-dom";
-import Register from "./components/Register";
-import Home from "./components/Home";
+import Register from "./Components/Register.jsx";
+import Home from "./Components/Home.jsx";
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -24,7 +24,7 @@ const App = () => {
           path="/login"
           element={<Login setIsAdmin={setIsAdmin} setToken={setToken} />}
         />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setToken={setToken} />} />
       </Routes>
       <Link to="/login">Login</Link>
     </main>

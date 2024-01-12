@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import { createUser } from "../../../prisma/users";
 
-function Register() {
+function Register( {setToken} ) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -28,6 +28,7 @@ function Register() {
       })
       console.log(token.token)
       localStorage.setItem("TOKEN", token.token);
+      setToken(window.localStorage.getItem("TOKEN") || null);
     } catch (error) {
       console.error(error)
     }
