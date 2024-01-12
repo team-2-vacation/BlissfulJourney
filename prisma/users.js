@@ -12,7 +12,7 @@ const createUser = async(email, username, password, firstName, lastName, isAdmin
             isAdmin
         }
     })
-    return user
+    return user;
 }
 
 const getAllUsers = async() => {
@@ -36,7 +36,7 @@ const checkUserExistance = async(username, email) => {
           ],
         },
       });
-      return existingUser
+      return existingUser;
 }
 
 
