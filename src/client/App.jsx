@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Register from "./Components/Register.jsx";
 import Home from "./Components/Home.jsx";
 import AllDestinations from './components/AllDestinations.jsx'
+import SingleDestination from "./components/SingleDestination.jsx";
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/destinations' element={<AllDestinations />} />
+        <Route path='/destinations/:id' element={<SingleDestination />} /> 
         <Route
           path="/login"
           element={<Login setIsAdmin={setIsAdmin} setToken={setToken} />}

@@ -67,7 +67,7 @@ const Destination = () => {
             {destinations.map((destination) => (
                 <div key={destination.id}>
                     <img src={destination.imageURL} alt={`destination ${destination.name}`} style={{ width: '300px', height: '300px' }} />
-                    <Link to={`/destination/${destination.id}`}>
+                    <Link to={`/destinations/${destination.id}`}>
                         <h3>{destination.name}</h3>
                     </Link>
                     {userIsAdmin && (
