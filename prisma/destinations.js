@@ -17,7 +17,7 @@ const createDestinations = async(name, country, description, time_to_visit, aver
 }
 
 const getAllDestinations = async() => {
-    const allDestinations = await prisma.destination.findmany()
+    const allDestinations = await prisma.destination.findMany()
     return allDestinations
 }
 
