@@ -18,7 +18,6 @@ const App = () => {
   );
   return (
     <main>
-      <h1>Home Page</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/destinations' element={<AllDestinations />} />

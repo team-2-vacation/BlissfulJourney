@@ -5,38 +5,39 @@ import { Link } from "react-router-dom";
 
 function SingleDestination() {
     const { id } = useParams();
-    const [destination, setDestination] = useState({})
-    const [attraction, setAttraction] = useState([])
-    const navigate = useNavigate();
-  
-    useEffect(() => {
-      async function getSingleDestination() {
-        try {
-          const { data: foundDestination } = await axios.get(`/api/destinations/${id}`)
-          setDestination(foundDestination)
-        }
-        catch (error) {
-          console.log(error)
-  
-        }
-  
-      }
-      getSingleDestination()
-    }, [id])
-    useEffect(() => {
-      async function getAttraction() {
-        try {
-          const { data: foundAttraction } = await axios.get("/api/attractions")
+    const [destination, setDestination] = useState({});
+    const [allAttractions, setAllAttractions] = useState([]);
+    const [filteredAttractions, setFilteredAttractions] = useState([]);
 
-          setAttraction(foundAttraction)
+    useEffect(() => {
+        async function getDestination() {
+            try {
+                const { data: foundDestination } = await axios.get(`/api/destinations/${id}`);
+                setDestination(foundDestination);
+            } catch (error) {
+                console.log(error);
+            }
         }
-        catch (error) {
-          console.log(error)
-  
+
+        async function getAllAttractions() {
+            try {
+                const { data: attractions } = await axios.get("/api/attractions");
+                setAllAttractions(attractions);
+            } catch (error) {
+                console.log(error);
+            }
         }
-      }
-      getAttraction()
-    }, [])
+
+        getDestination();
+        getAllAttractions();
+    }, [id]);
+
+    useEffect(() => {
+        const filtered = allAttractions.filter(attraction => attraction.destinationId === +id);
+
+        setFilteredAttractions(filtered);
+    }, [allAttractions, id]);
+
   return (
     <div>
        
@@ -49,14 +50,14 @@ function SingleDestination() {
         <p><strong>Language:</strong> {destination.language}</p>
         {destination.imageURL && <img src={destination.imageURL} alt={destination.name} />}
         <div>
-            {attraction.map((attr, index) => (
-                <div key={index}>
-                    <Link to={`/attractions/${attr.id || ''}`}>
-                        <h3>Attraction: {attr.name}</h3>
-                    </Link>
-                </div>
-            ))}
-        </div>
+                {filteredAttractions.map((attraction, index) => (
+                    <div key={index}>
+                        <Link to={`/attractions/${attraction.id}`}>
+                            <h3>Attraction: {attraction.name}</h3>
+                        </Link>
+                    </div>
+                ))}
+            </div>
     </div>
   )
 }
