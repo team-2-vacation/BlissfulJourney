@@ -20,8 +20,8 @@ router.get("/", async (req, res, next) => {
 
 //GET /api/users/:id
 router.get("/:id", async (req, res, next) => {
-  const userId = parseInt(req.params.id);
-
+  const userId = parseInt(req.params.id) || userId
+  
   try {
     const user = await getUser(userId);
     if (!user) {

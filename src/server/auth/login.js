@@ -34,7 +34,7 @@ router.post("/", async(req, res, next) => {
     const token = jwt.sign(
     { id: user.id, username: user.username }, 
     process.env.JWT_SECRET)
-    res.status(200).send({ message: "Login Sucessful", token, admin: user.isAdmin });
+    res.status(200).send({ message: "Login Sucessful", token, admin: user.isAdmin, id: user.id});
     
    } 
    catch (error) {
