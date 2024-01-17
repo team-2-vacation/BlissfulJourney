@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Account = ({setToken, setIsAdmin, setUserId, userId}) => {
+const Account = ({setToken, setIsAdmin, setUserId}) => {
     const navigate = useNavigate()
     const [user, setUser] = useState({})
 
