@@ -34,8 +34,8 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-//PUT /api/users/:id
-router.put("/:id", async (req, res, next) => {
+//PATCH /api/users/:id
+router.patch("/:id", async (req, res, next) => {
   const userId = parseInt(req.params.id);
   const { email, username, password, firstName, lastName } = req.body;
 
