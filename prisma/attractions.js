@@ -18,16 +18,4 @@ const getAllAttractions = async () => {
     return allAttractions;
 }
 
-
-// const isAdmin = (req, res, next) => {
-    
-//     const userIsAdmin = true; 
-
-//     if (userIsAdmin) {
-//         next(); 
-//     } else {
-//         res.status(403).json({ error: "Forbidden - Admins only" });
-//     }
-// };
-
 module.exports = { createAttractions, getAllAttractions };
