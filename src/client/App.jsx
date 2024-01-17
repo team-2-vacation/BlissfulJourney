@@ -9,6 +9,7 @@ import Home from "./Components/Home.jsx";
 import AllDestinations from './components/AllDestinations.jsx'
 import SingleDestination from "./components/SingleDestination.jsx";
 
+
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
     window.localStorage.getItem("Admin") || null
