@@ -39,5 +39,25 @@ const checkUserExistance = async(username, email) => {
       return existingUser;
 }
 
+const updateUser = async(id, email, username, password, firstName, lastName) => {
+    const updatedUser = await prisma.user.update({
+        where: { id },
+        data: {
+            email,
+            username,
+            password,
+            firstName,
+            lastName
+        }
+    })
+    return updatedUser;
+}
 
-module.exports = {createUser, getAllUsers, getUser, checkUserExistance}
+const deleteUser = async( id ) => {
+    const deletedUser = await prisma.user.delete({
+        where: { id }
+    })
+    return deletedUser
+}
+
+module.exports = {createUser, getAllUsers, getUser, updateUser, deleteUser, checkUserExistance}

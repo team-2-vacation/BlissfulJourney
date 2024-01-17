@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Register from "./Components/Register.jsx";
 import Home from "./Components/Home.jsx";
-import AllDestinations from './components/AllDestinations.jsx'
+import AllDestinations from './Components/AllDestinations.jsx'
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
