@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Register from "./Components/Register.jsx";
 import Home from "./Components/Home.jsx";
-import AllDestinations from './Components/AllDestinations.jsx'
+import AllDestinations from './components/AllDestinations.jsx'
+import SingleDestination from "./components/SingleDestination.jsx";
+
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -17,10 +19,10 @@ const App = () => {
   );
   return (
     <main>
-      <h1>Home Page</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/destinations' element={<AllDestinations />} />
+        <Route path='/destinations/:id' element={<SingleDestination />} /> 
         <Route
           path="/login"
           element={<Login setIsAdmin={setIsAdmin} setToken={setToken} />}

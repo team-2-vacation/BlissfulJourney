@@ -54,7 +54,7 @@ router.post("/", async (req, res, next) => {
 });
 
 
-router.put("/:id", async (req, res, next) => {
+router.patch("/:id", async (req, res, next) => {
   const attractionId = parseInt(req.params.id);
   const { name, imageURL, destinationId } = req.body;
 
