@@ -7,7 +7,7 @@ const {createDestinations, getAllDestinations} = require("../../../prisma/destin
 // GET /api/destinations Gets all destinations 
 // GET /api/destinations/:id Gets details of a specific destination
 // POST /api/destinations Adds a new destination. //ADMIN ONLY
-// PUT /api/destinations  Edits the details of a specific destination. //ADMIN ONLY
+// PATCH /api/destinations  Edits the details of a specific destination. //ADMIN ONLY
 // DELETE /api/destinations/:id Deletes a specific destination.  //ADMIN ONLY
 
 // GET /api/destinations Gets all destinations 
@@ -50,8 +50,8 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// PUT /api/destinations  Edits the details of a specific destination. //ADMIN ONLY
-router.put('/:id', async (req, res, next) => {
+// Patch /api/destinations  Edits the details of a specific destination. //ADMIN ONLY
+router.patch('/:id', async (req, res, next) => {
   try {
     const destinationId = +req.params.id
     const postBody = req.body
