@@ -11,7 +11,7 @@ const createInterests = async(name, description, imageURL) => {
 }
 
 const getAllInterests = async() => {
-    const allInterests = await prisma.interest.findmany()
+    const allInterests = await prisma.interest.findMany()
     return allInterests;
 }
 
