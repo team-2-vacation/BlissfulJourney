@@ -3,7 +3,7 @@ import{ useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({setIsAdmin, setToken}) => {
+const Login = ({setIsAdmin, setToken, setUserId}) => {
     const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -17,11 +17,14 @@ const Login = ({setIsAdmin, setToken}) => {
         )
         const token = userData.data.token
         const admin = userData.data.admin
+        const id = userData.data.id
 
         localStorage.setItem("TOKEN", token);
         localStorage.setItem("Admin", admin);
+        localStorage.setItem("Id", id);
         setToken(window.localStorage.getItem("TOKEN") || null);
         setIsAdmin(window.localStorage.getItem("Admin") || null);
+        setUserId(window.localStorage.getItem("Id") || null)
         navigate("/")
         } 
         catch (error) {

@@ -15,6 +15,9 @@ const App = () => {
     window.localStorage.getItem("Admin") || null);
   const [token, setToken] = useState(
     window.localStorage.getItem("TOKEN") || null);
+  const [userId, setUserId] = useState(
+    window.localStorage.getItem("Id") || null);
+
   return (
     <main>
       <Navbar token={token} isAdmin={isAdmin} />
@@ -23,9 +26,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path='/destinations' element={<AllDestinations />} />
         <Route path='/destinations/:id' element={<SingleDestination />} /> 
-        <Route path="/login" element={<Login setIsAdmin={setIsAdmin} setToken={setToken} />} />
+        <Route path="/login" element={<Login setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} userId={userId} />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
-        <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} />}/>
+        <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
       </Routes>
     </main>
   );
