@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { getUser, getAllUsers, updateUser, deleteUser } = require("../../../prisma/users");
-
 const prisma = require("../../../prisma/client");
-
-// ROUTE TO CREATE USERS IS IN server/auth/register
 
 // GET /api/users
 router.get("/", async (req, res, next) => {
@@ -41,7 +38,6 @@ router.patch("/:id", async (req, res, next) => {
 
  //will eventually add logic here to ensure that user making these changes is authorized to do so
   //i.e. is the owner of the account or an admin
-
 
   try {  
       const updatedUser = await updateUser(userId, email, username, password, firstName, lastName)

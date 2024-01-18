@@ -3,7 +3,6 @@ const router = express.Router();
 const prisma = require("../../../prisma/client");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { getAllUsers } = require("../../../prisma/users");
 require("dotenv").config();
 
 // /auth/login

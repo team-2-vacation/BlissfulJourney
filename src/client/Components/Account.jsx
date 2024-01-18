@@ -29,7 +29,6 @@ const Account = ({setToken, setIsAdmin, setUserId}) => {
   }
   getUser();
 }, []);
-console.log("user", user)
 
   return (
   <div>

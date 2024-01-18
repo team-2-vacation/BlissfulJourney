@@ -26,7 +26,6 @@ const Login = ({setIsAdmin, setToken, setUserId}) => {
         setIsAdmin(window.localStorage.getItem("Admin") || null);
         setUserId(window.localStorage.getItem("Id") || null)
         navigate("/")
-    
         } 
         catch (error) {
             console.log(error)
