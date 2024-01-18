@@ -3,7 +3,6 @@ const router = express.Router();
 const prisma = require("../../../prisma/client");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { getAllUsers } = require("../../../prisma/users");
 require("dotenv").config();
 
 // /auth/login
@@ -34,7 +33,7 @@ router.post("/", async(req, res, next) => {
     const token = jwt.sign(
     { id: user.id, username: user.username }, 
     process.env.JWT_SECRET)
-    res.status(200).send({ message: "Login Sucessful", token, admin: user.isAdmin });
+    res.status(200).send({ message: "Login Sucessful", token, admin: user.isAdmin, id: user.id});
     
    } 
    catch (error) {
