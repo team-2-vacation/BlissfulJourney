@@ -1,18 +1,12 @@
 const express = require("express");
 const ViteExpress = require("vite-express");
 const morgan = require("morgan");
-require("dotenv").config();
-
 const app = express();
+require("dotenv").config();
 
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.get("/hello", (req, res) => {
-  res.send("Hello World");
-});
-
 
 app.use("/api", require("./api"));
 app.use("/auth", require("./auth"));

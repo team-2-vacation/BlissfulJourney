@@ -33,19 +33,18 @@ const Login = ({setIsAdmin, setToken, setUserId}) => {
 
     return (
         <>
-    <h1>Login</h1>
-    <section id="login_page">
-        <form>
-            <input placeholder="username or email" value={identifier}
-            onChange={(event) => setIdentifier(event.target.value)}/>
-            <br />
-            <input type="password" placeholder="password" value={password}
-            onChange={(event) => setPassword(event.target.value)}/>
-            <br />
-            <button onClick={loginHandle}>Log In</button>
-        </form>
-    </section>
-    </>
+        <h1>Login</h1>
+        <section id="login_page">
+            <form>
+                <input placeholder="username or email" value={identifier}
+                onChange={(event) => setIdentifier(event.target.value)}/>
+                <br />
+                <input type="password" placeholder="password" value={password}
+                onChange={(event) => setPassword(event.target.value)}/>
+                <br />
+                <button onClick={loginHandle}>Log In</button>
+            </form>
+        </section>
+        </>
 )};
-
-export default Login
+export default Login;

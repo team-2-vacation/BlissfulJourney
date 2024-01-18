@@ -1,6 +1,4 @@
-const express = require("express");
 const prisma = require("./client");
-const router = express.Router();
 
 const createAttractions = async (name, imageURL, destinationId) => {
     const attractions = await prisma.attraction.create({
