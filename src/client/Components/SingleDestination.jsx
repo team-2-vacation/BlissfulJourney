@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -46,14 +46,15 @@ function SingleDestination() {
         <p><strong>Description:</strong> {destination.description}</p>
         <p><strong>Best Time to Visit:</strong> {destination.time_to_visit}</p>
         <p><strong>Average Cost:</strong> {destination.average_cost}</p>
-        <p><strong>Currency:</strong> {destination.currency}</p>
-        <p><strong>Language:</strong> {destination.language}</p>
+        {destination.currency && <p><strong>Currency:</strong> {destination.currency}</p>}
+        {destination.language && <p><strong>Language:</strong> {destination.language}</p>}
         {destination.imageURL && <img src={destination.imageURL} alt={destination.name} />}
         <div>
                 {filteredAttractions.map((attraction, index) => (
                     <div key={index}>
                         <Link to={`/attractions/${attraction.id}`}>
                             <h3>Attraction: {attraction.name}</h3>
+                            {attraction.imageURL && <img src={attraction.imageURL} alt ={attraction.name} style={{ width: '100px', height: '100px' }}/>}
                         </Link>
                     </div>
                 ))}
