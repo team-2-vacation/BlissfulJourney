@@ -31,7 +31,7 @@ const Account = ({setToken, setIsAdmin, setUserId}) => {
 }, []);
 
   return (
-  <div>
+  <>
       <h1>Name: {user.firstName} {user.lastName}</h1>
       <h1>Email: {user.email}</h1>
       <h1>Username: {user.username}</h1>
@@ -39,6 +39,6 @@ const Account = ({setToken, setIsAdmin, setUserId}) => {
         {/* <li>{interest}</li> */}
       <h1>Vacation Wishlist: </h1>
       <button onClick={logOut}>Log Out</button>
-  </div>
+  </>
 )};
-  export default Account
+  export default Account;

@@ -21,4 +21,4 @@ const getAllDestinations = async() => {
     return allDestinations;
 }
 
-module.exports = {createDestinations, getAllDestinations} 
+module.exports = {createDestinations, getAllDestinations};

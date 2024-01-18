@@ -9,38 +9,34 @@ const Destination = () => {
     const [editingDestination, setEditingDestination] = useState(null);
 
     useEffect(() => {
-        async function getDestinations() {
+        getDestinations = async () => {
             try {
-                const { data: foundDestination } = await axios.get("/api/destinations")
-                setDestinations(foundDestination)
+                const { data: foundDestination } = await axios.get("/api/destinations");
+                setDestinations(foundDestination);
             }
             catch (error) {
-                console.log(error)
-
+                console.log(error);
             }
         }
-        getDestinations()
+        getDestinations();
     }, [])
-    //to check if the user is an admin
+
     const isAdmin = () => {
         return localStorage.getItem("Admin") === "true";
     };
    
     const userIsAdmin = isAdmin();
 
-    //Add a new destination 
     const handleAddDestination = () => {
         setEditingDestination(null);
         setShowForm(true);
     };
 
-    //Edit destination 
     const handleEditDestination = (destination) => {
         setEditingDestination(destination); 
         setShowForm(true);
     };
 
-    //Delete destintaion 
     const handleDeleteDestination = async (id) => {
         try {
             await axios.delete(`/api/destinations/${id}`);
@@ -55,7 +51,7 @@ const Destination = () => {
     };
 
     return (
-        <div>
+        <>
             <h2>All Destinations</h2>
            {userIsAdmin && (<button onClick={handleAddDestination}>Add New Destination</button>)}
             {showForm && (
@@ -77,8 +73,8 @@ const Destination = () => {
                     </>)}
                 </div>
             ))}
-        </div>
+        </>
     )
 }
 
-export default Destination
+export default Destination;

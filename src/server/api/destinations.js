@@ -3,14 +3,6 @@ const router = express.Router();
 const prisma = require('../../../prisma/client');
 const {createDestinations, getAllDestinations} = require("../../../prisma/destinations");
 
-//CURRENT ROUTES
-// GET /api/destinations Gets all destinations 
-// GET /api/destinations/:id Gets details of a specific destination
-// POST /api/destinations Adds a new destination. //ADMIN ONLY
-// PATCH /api/destinations  Edits the details of a specific destination. //ADMIN ONLY
-// DELETE /api/destinations/:id Deletes a specific destination.  //ADMIN ONLY
-
-// GET /api/destinations Gets all destinations 
 router.get("/", async (req, res, next) => {
   try {
     const allDestinations = await getAllDestinations();
@@ -21,7 +13,6 @@ router.get("/", async (req, res, next) => {
   } 
 });
 
-// GET /api/destinations/:id Gets details of a specific destination
 router.get('/:id', async (req, res, next) => {
   const destinationId = +req.params.id;
 
@@ -37,8 +28,7 @@ router.get('/:id', async (req, res, next) => {
     next(error);
   }
 });
-
-// POST /api/destinations Adds a new destination. 
+ 
 router.post('/', async (req, res, next) => {
   const { name, country, description, time_to_visit, average_cost, imageURL, currency, language } = req.body;
   try {
@@ -50,7 +40,6 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// Patch /api/destinations  Edits the details of a specific destination. //ADMIN ONLY
 router.patch('/:id', async (req, res, next) => {
   try {
     const destinationId = +req.params.id
@@ -69,12 +58,10 @@ router.patch('/:id', async (req, res, next) => {
   }
 });
 
-// DELETE /api/destinations/:id Deletes a specific destination.  //ADMIN ONLY
 router.delete('/:id', async (req, res, next) => {
   try {
     const destinationId = +req.params.id
     
-    // Check for existing Attraction references
     const attractions = await prisma.attraction.findMany({
       where: {
         destinationId: destinationId
@@ -98,5 +85,3 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 module.exports = router;
-
-

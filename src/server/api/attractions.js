@@ -32,7 +32,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-
 router.post("/", async (req, res, next) => {
   const { name, imageURL, destinationId } = req.body;
 
@@ -42,17 +41,14 @@ router.post("/", async (req, res, next) => {
           return res.status(400).json({ error: "Missing required data" });
       }
 
-      
       const newAttraction = await createAttractions(name, imageURL, destinationId);
 
-      
       res.status(201).json(newAttraction);
   } catch (error) {
       console.error("Error creating attraction:", error);
       res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 router.patch("/:id", async (req, res, next) => {
   const attractionId = parseInt(req.params.id);
@@ -63,7 +59,6 @@ router.patch("/:id", async (req, res, next) => {
       if (!name || !imageURL || !destinationId) {
           return res.status(400).json({ error: "Missing required data" });
       }
-
    
       const updatedAttraction = await prisma.attraction.update({
           where: { id: attractionId },
@@ -95,5 +90,4 @@ router.delete("/:id", async (req, res, next) => {
       res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 module.exports = router;

@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-// /auth/login
 router.post("/", async(req, res, next) => {
     const { identifier , password } = req.body
 
@@ -25,7 +24,7 @@ router.post("/", async(req, res, next) => {
         return res.status(401).send('Invalid username or password');
       }
 
-    const validUser = await bcrypt.compare(password, user.password)
+    const validUser = await bcrypt.compare(password, user.password);
 
     if (!validUser){
         return res.status(401).send('Invalid username or password');
@@ -34,12 +33,9 @@ router.post("/", async(req, res, next) => {
     { id: user.id, username: user.username }, 
     process.env.JWT_SECRET)
     res.status(200).send({ message: "Login Sucessful", token, admin: user.isAdmin, id: user.id});
-    
    } 
    catch (error) {
         console.log(error)
    }
-
 });
-
 module.exports = router;

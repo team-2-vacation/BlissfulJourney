@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function DestinationForm({ onClose, destinationToEdit }) {
+const DestinationForm = ({ onClose, destinationToEdit }) => {
     const [name, setName] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
@@ -39,10 +39,8 @@ function DestinationForm({ onClose, destinationToEdit }) {
 
         try {
             if (destinationToEdit) {
-                // update destination
                 await axios.put(`/api/destinations/${destinationToEdit.id}`, destinationData);
             } else {
-                // create new destination
                 await axios.post(`/api/destinations`, destinationData);
             }
             onClose();
@@ -50,10 +48,9 @@ function DestinationForm({ onClose, destinationToEdit }) {
             console.log(error);
         }
     };
-  
 
     return (
-        <div>
+        <>
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
@@ -82,8 +79,7 @@ function DestinationForm({ onClose, destinationToEdit }) {
             <button type="submit">{destinationToEdit ? "Edit Destination" : "Add Destination"}</button>
             <button type="button" onClick={onClose}>Cancel</button>
         </form>
-    </div>
+    </>
     );
 }
-
 export default DestinationForm;

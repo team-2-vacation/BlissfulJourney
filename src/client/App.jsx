@@ -1,7 +1,6 @@
 import "./App.css";
 import Login from "./Components/Login.jsx";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Register from "./Components/Register.jsx";
 import Home from "./Components/Home.jsx";
@@ -20,7 +19,7 @@ const App = () => {
     window.localStorage.getItem("Id") || null);
 
   return (
-    <main>
+    <>
       <Navbar token={token} isAdmin={isAdmin} />
       <h1>Home Page</h1>
       <Routes>
@@ -32,8 +31,7 @@ const App = () => {
         <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
       </Routes>
-    </main>
+    </>
   );
 };
-
 export default App;
