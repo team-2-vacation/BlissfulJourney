@@ -10,6 +10,7 @@ import SingleDestination from "./Components/SingleDestination.jsx";
 import Navbar from "./Components/Navbar.jsx"
 import Account from "./Components/Account.jsx"
 import Attractions from "./Components/Attractions.jsx";
+import Quiz from "./Components/Quiz.jsx";
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/login" element={<Login setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} userId={userId} />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
     </main>
   );
