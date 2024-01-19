@@ -9,7 +9,7 @@ const Destination = () => {
     const [editingDestination, setEditingDestination] = useState(null);
 
     useEffect(() => {
-        getDestinations = async () => {
+        const getDestinations = async () => {
             try {
                 const { data: foundDestination } = await axios.get("/api/destinations");
                 setDestinations(foundDestination);
