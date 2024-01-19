@@ -20,6 +20,7 @@ const Navbar = ({ token, isAdmin }) => {
         {token ? (<Link to="/account">Account</Link>) : (
           <Link to="/login">Login</Link>)}
         {!token ? <Link to="/register">Register</Link>: ""}
+        {token ? (<Link to="/wishlist">My Wishlist</Link>) : ""}
       </div>
     </div>
     </nav>
