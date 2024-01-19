@@ -19,18 +19,15 @@ const Home = () => {
       </video>
       <div className="relative z-10 flex justify-center items-center h-full">
         <div className="text-white text-center">
-          {/* Increase the font size here */}
           <h1 className="text-6xl font-bold mb-2 font-custom">YOUR ADVENTURE STARTS HERE</h1>
-          
-          {/* Adjusted button container to position at the bottom */}
           <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-4">
-  <button
-    onClick={goToDestinationPage}
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-  >
-    Discover More
-  </button>
-</div>
+            <button
+              onClick={goToDestinationPage}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Discover More
+            </button>
+          </div>
         </div>
       </div>
     </div>
