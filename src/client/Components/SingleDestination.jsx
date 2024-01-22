@@ -3,14 +3,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function SingleDestination() {
+const SingleDestination = () => {
     const { id } = useParams();
     const [destination, setDestination] = useState({});
     const [allAttractions, setAllAttractions] = useState([]);
     const [filteredAttractions, setFilteredAttractions] = useState([]);
 
     useEffect(() => {
-        async function getDestination() {
+        const getDestination = async () => {
             try {
                 const { data: foundDestination } = await axios.get(`/api/destinations/${id}`);
                 setDestination(foundDestination);
@@ -19,7 +19,7 @@ function SingleDestination() {
             }
         }
 
-        async function getAllAttractions() {
+        const getAllAttractions = async () => {
             try {
                 const { data: attractions } = await axios.get("/api/attractions");
                 setAllAttractions(attractions);
@@ -27,20 +27,17 @@ function SingleDestination() {
                 console.log(error);
             }
         }
-
         getDestination();
         getAllAttractions();
     }, [id]);
 
     useEffect(() => {
         const filtered = allAttractions.filter(attraction => attraction.destinationId === +id);
-
         setFilteredAttractions(filtered);
     }, [allAttractions, id]);
 
   return (
-    <div>
-       
+    <>  
       <h1>{destination.name}</h1>
         <p><strong>Country:</strong> {destination.country}</p>
         <p><strong>Description:</strong> {destination.description}</p>
@@ -59,8 +56,7 @@ function SingleDestination() {
                     </div>
                 ))}
             </div>
-    </div>
+    </>
   )
 }
-
-export default SingleDestination
+export default SingleDestination;

@@ -3,7 +3,6 @@ const router = express.Router();
 const prisma = require('../../../prisma/client');
 const {createInterests, getAllInterests} = require('../../../prisma/interests');
 
-// GET /api/interests
 router.get("/", async (req, res, next) => {
   try {
       const allInterests = await getAllInterests();
@@ -33,7 +32,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-
 router.post("/", async (req, res, next) => {
   const { name, imageURL, description } = req.body;
 
@@ -42,10 +40,8 @@ router.post("/", async (req, res, next) => {
       if (!name || !imageURL || !description) {
           return res.status(400).json({ error: "Missing required data" });
       }
-
-      
+ 
       const newInterest = await createInterests(name, imageURL, description);
-
       
       res.status(201).json(newInterest);
   } catch (error) {
@@ -53,7 +49,6 @@ router.post("/", async (req, res, next) => {
       res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 router.patch("/:id", async (req, res, next) => {
   const interestId = parseInt(req.params.id);
@@ -90,5 +85,4 @@ router.delete("/:id", async (req, res, next) => {
       res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 module.exports = router;

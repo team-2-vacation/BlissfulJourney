@@ -15,4 +15,4 @@ const getAllInterests = async() => {
     return allInterests;
 }
 
-module.exports = {createInterests, getAllInterests} 
+module.exports = {createInterests, getAllInterests};

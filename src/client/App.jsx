@@ -1,7 +1,6 @@
 import "./App.css";
 import Login from "./Components/Login.jsx";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Register from "./Components/Register.jsx";
 import Home from "./Components/Home.jsx";
@@ -10,7 +9,9 @@ import SingleDestination from "./Components/SingleDestination.jsx";
 import Navbar from "./Components/Navbar.jsx"
 import Account from "./Components/Account.jsx"
 import Attractions from "./Components/Attractions.jsx";
+import Wishlist from "./Components/Wishlist.jsx";
 import Quiz from "./Components/Quiz.jsx";
+
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -21,7 +22,7 @@ const App = () => {
     window.localStorage.getItem("Id") || null);
 
   return (
-    <main>
+    <>
       <Navbar token={token} isAdmin={isAdmin} />
       <h1>Home Page</h1>
       <Routes>
@@ -32,10 +33,10 @@ const App = () => {
         <Route path="/login" element={<Login setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} userId={userId} />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
+        <Route path="/wishlist" element={<Wishlist token={token} />} />
         <Route path="/quiz" element={<Quiz />} />
       </Routes>
-    </main>
+    </>
   );
 };
-
 export default App;

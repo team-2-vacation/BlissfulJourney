@@ -1,5 +1,4 @@
 const prisma = require("./client");
-const bcrypt = require("bcrypt");
 
 const createUser = async(email, username, password, firstName, lastName, isAdmin) => {
     const user = await prisma.user.create({
@@ -57,7 +56,7 @@ const deleteUser = async( id ) => {
     const deletedUser = await prisma.user.delete({
         where: { id }
     })
-    return deletedUser
+    return deletedUser;
 }
 
-module.exports = {createUser, getAllUsers, getUser, updateUser, deleteUser, checkUserExistance}
+module.exports = {createUser, getAllUsers, getUser, updateUser, deleteUser, checkUserExistance};

@@ -3,7 +3,6 @@ const router = express.Router();
 const { getUser, getAllUsers, updateUser, deleteUser } = require("../../../prisma/users");
 const prisma = require("../../../prisma/client");
 
-// GET /api/users
 router.get("/", async (req, res, next) => {
   try {
     const users = await getAllUsers();
@@ -15,7 +14,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//GET /api/users/:id
 router.get("/:id", async (req, res, next) => {
   const userId = parseInt(req.params.id) || userId
   
@@ -31,13 +29,9 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-//PATCH /api/users/:id
 router.patch("/:id", async (req, res, next) => {
   const userId = parseInt(req.params.id);
   const { email, username, password, firstName, lastName } = req.body;
-
- //will eventually add logic here to ensure that user making these changes is authorized to do so
-  //i.e. is the owner of the account or an admin
 
   try {  
       const updatedUser = await updateUser(userId, email, username, password, firstName, lastName)
@@ -48,18 +42,13 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-//DELETE /api/users/:id
 router.delete("/:id", async (req, res, next) => {
   const userId = parseInt(req.params.id);
 
-  //checks to see if user exists
   const existingUser = getUser(userId)
   if (!existingUser) {
     return res.status(404).json({ error: "User not found" })
   }
-
-  //will eventually add logic here to ensure that user making these changes is authorized to do so
-  //i.e. is the owner of the account or an admin
 
   try {
       const deletedUser = await deleteUser(userId)

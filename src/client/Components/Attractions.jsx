@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function Attractions() {
+const Attractions = () => {
     const { id } = useParams();
     const [attraction, setAttraction] = useState({}); 
 
     useEffect(() => {
-        async function getAttraction() {
+        const getAttraction = async () => {
             try {
                 const { data: foundAttraction } = await axios.get(`/api/attractions/${id}`);
                 setAttraction(foundAttraction);
@@ -19,11 +19,10 @@ function Attractions() {
     }, [id]);
 
     return (
-        <div>
+        <>
             <h1>{attraction.name}</h1>
             {attraction.imageURL && <img src={attraction.imageURL} alt={attraction.name} />}
-        </div>
+        </>
     );
 }
-
 export default Attractions;

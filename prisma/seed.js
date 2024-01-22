@@ -5,7 +5,6 @@ const {createInterests} = require("./interests");
 const {createDestinations} = require("./destinations");
 const {createAttractions} = require("./attractions");
 
-
 const seed = async() => {
 
 const johnPass = await bcrypt.hash(`${123}`, 5)
@@ -38,6 +37,7 @@ const lake = await createAttractions("Tjörnin Lake", "https://i.imgur.com/Now55
 
 }
 seed()
+
 .then(async () => {
     await prisma.$disconnect();
   })
