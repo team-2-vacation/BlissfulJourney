@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import DestinationForm from "./DestinationForm";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Destination = () => {
-    const [destinations, setDestinations] = useState([])
+    const [destinations, setDestinations] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [editingDestination, setEditingDestination] = useState(null);
 
@@ -14,7 +14,7 @@ const Destination = () => {
                 const { data: foundDestination } = await axios.get("/api/destinations");
                 setDestinations(foundDestination);
             }
-            catch (error) {
+            catch(error) {
                 console.log(error);
             }
         }
@@ -41,7 +41,7 @@ const Destination = () => {
         try {
             await axios.delete(`/api/destinations/${id}`);
             setDestinations(destinations.filter(destination => destination.id !== id));
-        } catch (error) {
+        } catch(error) {
             console.log(error);
         }
     };
