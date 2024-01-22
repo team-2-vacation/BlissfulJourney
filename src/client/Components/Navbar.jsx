@@ -25,10 +25,10 @@ const Navbar = ({ token, isAdmin }) => {
             </div>
           </div>
           <div class="hidden md:flex items-center space-x-1 ">
-            {token ? (<Link class="py-4 px-2" to="/account">Account</Link>) : (
-              <Link class="py-4 px-2 text-gray-700" to="/login">Login</Link>)}
+            {token ? (<Link class="py-4 px-2 text-gray-700  hover:text-gray-900" to="/account">Account</Link>) : (
+              <Link class="py-4 px-2 text-gray-700  hover:text-gray-900" to="/login">Login</Link>)}
             {!token ? <Link class="py-2 px-2 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300" to="/register">Register</Link> : ""}
-            {token ? (<Link class="py-4 px-2 " to="/wishlist">My Wishlist</Link>) : ""}
+            {token ? (<Link class="py-4 px-2  text-gray-700  hover:text-gray-900" to="/wishlist">My Wishlist</Link>) : ""}
           </div>
         </div>
         <div class="md:hidden flex items-center">
