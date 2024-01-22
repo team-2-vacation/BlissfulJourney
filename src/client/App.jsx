@@ -10,6 +10,8 @@ import Navbar from "./Components/Navbar.jsx"
 import Account from "./Components/Account.jsx"
 import Attractions from "./Components/Attractions.jsx";
 import Wishlist from "./Components/Wishlist.jsx";
+import Quiz from "./Components/Quiz.jsx";
+
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -32,6 +34,7 @@ const App = () => {
         <Route path="/register" element={<Register setToken={setToken} />} />
         <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
         <Route path="/wishlist" element={<Wishlist token={token} />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
     </>
   );
