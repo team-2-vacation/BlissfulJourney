@@ -4,6 +4,7 @@ const {createUser} = require("./users");
 const {createInterests} = require("./interests");
 const {createDestinations} = require("./destinations");
 const {createAttractions} = require("./attractions");
+const {createUserInterest} = require("./user_interest")
 
 const seed = async() => {
 
@@ -34,6 +35,10 @@ const terrace = await createAttractions("Tegallalang Rice Terraces", "https://i.
 const church = await createAttractions("Hallgrímskirkja", "https://i.imgur.com/MZAeagd.jpeg", reykjavik.id)
 const sculpture = await createAttractions("The Sun Voyager (Sólfar)", "https://i.imgur.com/dUiPopa.jpeg", reykjavik.id)
 const lake = await createAttractions("Tjörnin Lake", "https://i.imgur.com/Now55Qu.jpeg", reykjavik.id)
+
+const john_culture = await createUserInterest(john.id, culture.id)
+const jack_outdoor = await createUserInterest(jack.id, outdoor.id)
+const jill_relaxing = await createUserInterest(jill.id, relaxing.id)
 
 }
 seed()
