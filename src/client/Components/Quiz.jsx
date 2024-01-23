@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Quiz() {
   const [cultureCount, setCultureCount] = useState(0);
@@ -9,6 +10,46 @@ function Quiz() {
   function refreshPage() {
     window.location.reload();
   }
+
+  const handleAddCulture = async () => {
+    const userId = window.localStorage.getItem("Id");
+    console.log("userId", userId);
+    const result = await axios.post("/api/users_interests", {
+      userId: +userId,
+      interestId: 1,
+    }); 
+  };
+
+  const handleAddOutdoor = async () => {
+    const userId = window.localStorage.getItem("Id");
+    console.log("userId", userId);
+    const result = await axios.post("/api/users_interests", {
+      userId: +userId,
+      interestId: 2,
+    }); 
+  };
+
+  const handleAddRelax = async () => {
+    const userId = window.localStorage.getItem("Id");
+    console.log("userId", userId);
+    const result = await axios.post("/api/users_interests", {
+      userId: +userId,
+      interestId: 3,
+    }); 
+  };
+  
+  const addInterests = () => {
+    highScoreCategories.forEach(async (element) => {
+      if (element === "Culture Traveler") {
+        handleAddCulture();
+      } else if (element === "Outdoor Traveler") {
+        handleAddOutdoor();
+      } else if (element === "Relaxing Traveler") {
+        handleAddRelax();
+      }
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -184,15 +225,11 @@ function Quiz() {
         <br />
         <button type="submit">Submit</button>
         <br />
-        <button type="button" onClick={refreshPage}>
-          {" "}
-          <span>Want to take the quiz again? Reload here!</span>{" "}
-        </button>
       </form>
 
       {highScoreCategories.length === 0 && (
         <div>
-          <h3>You are not a traveler!</h3>
+          <h3>Hit submit to see your results here!</h3>
         </div>
       )}
       {highScoreCategories.length > 0 && (
@@ -204,6 +241,13 @@ function Quiz() {
                 <h3>Traveler type: {interest}</h3>
               </div>
             ))}
+            <button type="button" onClick={addInterests}>
+              Want to link your results to your profile? Click here!
+            </button>
+            <br />
+            <button type="button" onClick={refreshPage}>
+              <span>Want to take the quiz again? Reload here!</span>
+            </button>
           </h3>
         </div>
       )}
