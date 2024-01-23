@@ -36,6 +36,19 @@ const SingleDestination = () => {
         setFilteredAttractions(filtered);
     }, [allAttractions, id]);
 
+    const addToWishHandle = async() => {
+        try {
+            const data = await axios.post(`/api/wishlist/destination/${id}`, {id}, 
+            {headers: { Authorization: "Bearer " + window.localStorage.getItem("TOKEN"),
+        },
+        })
+    console.log("data", data)
+    }
+         catch (error) {
+            console.log(error)
+        }
+    }
+
   return (
     <>  
       <h1>{destination.name}</h1>
@@ -46,7 +59,7 @@ const SingleDestination = () => {
         {destination.currency && <p><strong>Currency:</strong> {destination.currency}</p>}
         {destination.language && <p><strong>Language:</strong> {destination.language}</p>}
         {destination.imageURL && <img src={destination.imageURL} alt={destination.name} />}
-        <div>
+            <div>
                 {filteredAttractions.map((attraction, index) => (
                     <div key={index}>
                         <Link to={`/attractions/${attraction.id}`}>
@@ -56,6 +69,8 @@ const SingleDestination = () => {
                     </div>
                 ))}
             </div>
+            <br/>
+            <button onClick={addToWishHandle}>Add To Wishlist</button>
     </>
   )
 }
