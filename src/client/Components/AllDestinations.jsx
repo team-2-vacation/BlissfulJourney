@@ -4,7 +4,7 @@ import axios from "axios";
 import DestinationForm from "./DestinationForm";
 
 const Destination = () => {
-    const [destinations, setDestinations] = useState([]);
+    const [destinations, setDestinations] = useState([]);;
     const [showForm, setShowForm] = useState(false);
     const [editingDestination, setEditingDestination] = useState(null);
 
@@ -17,14 +17,11 @@ const Destination = () => {
             catch(error) {
                 console.log(error);
             }
-        }
+        };
         getDestinations();
-    }, [])
+    }, []);
 
-    const isAdmin = () => {
-        return localStorage.getItem("Admin") === "true";
-    };
-   
+    const isAdmin = () => localStorage.getItem("Admin") === "true";
     const userIsAdmin = isAdmin();
 
     const handleAddDestination = () => {
@@ -33,48 +30,96 @@ const Destination = () => {
     };
 
     const handleEditDestination = (destination) => {
-        setEditingDestination(destination); 
+        setEditingDestination(destination);
         setShowForm(true);
     };
-
+    
     const handleDeleteDestination = async (id) => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this destination?");
+    if (isConfirmed) {
         try {
             await axios.delete(`/api/destinations/${id}`);
             setDestinations(destinations.filter(destination => destination.id !== id));
         } catch(error) {
             console.log(error);
         }
-    };
+    }
+};
     const handleCloseForm = () => {
         setShowForm(false);
         setEditingDestination(null);
     };
 
     return (
-        <>
-            <h2>All Destinations</h2>
-           {userIsAdmin && (<button onClick={handleAddDestination}>Add New Destination</button>)}
-            {showForm && (
-                <DestinationForm
-                    onClose={handleCloseForm}
-                    destinationToEdit={editingDestination}
-                />
-            )}
-            {destinations.map((destination) => (
-                <div key={destination.id}>
-                    <img src={destination.imageURL} alt={`destination ${destination.name}`} style={{ width: '300px', height: '300px' }} />
-                    <Link to={`/destinations/${destination.id}`}>
-                        <h3>{destination.name}</h3>
-                    </Link>
+        <section className="md:h-full flex items-center text-gray-600">
+            <div className="container px-3 py-4 mx-auto">
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3">Explore the World</h1>
                     {userIsAdmin && (
-                        <>
-                    <button onClick={() => handleEditDestination(destination)}>Edit</button>
-                    <button onClick={() => handleDeleteDestination(destination.id)}>Delete</button>
-                    </>)}
+                        <button
+                            onClick={handleAddDestination}
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+                        >
+                            Add New Destination
+                        </button>
+                    )}
                 </div>
-            ))}
-        </>
-    )
-}
+                <div className="flex flex-wrap -m-4">
+                    {destinations.map((destination) => (
+                        <div key={destination.id} className="p-4 sm:w-1/2 lg:w-1/3">
+                            <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                                <Link to={`/destinations/${destination.id}`}>
+                                    <img 
+                                        className="lg:h-72 md:h-48 w-full object-cover object-center transform hover:scale-105 transition duration-300"
+                                        src={destination.imageURL} 
+                                        alt={`destination ${destination.name}`} 
+                                    />
+                                </Link>
+                                <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
+                                    <Link to={`/destinations/${destination.id}`}>
+                                        <h3 className="text-2xl font-semibold mb-3">{destination.name}</h3>
+                                    </Link>
+                                    {userIsAdmin && (
+                                        <div className="flex justify-between mt-4">
+                                            <button
+                                                onClick={() => handleEditDestination(destination)}
+                                                className="text-sm bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-3 rounded"
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => handleDeleteDestination(destination.id)}
+                                                className="text-sm bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {showForm && (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+                    <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                        <DestinationForm
+                            onClose={handleCloseForm}
+                            destinationToEdit={editingDestination}
+                        />
+                        <button
+                            onClick={handleCloseForm}
+                            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+        </section>
+    );
+};
 
 export default Destination;

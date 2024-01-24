@@ -11,88 +11,89 @@ datasource db {
 }
 
 model User {
-  id            Int         @id @default(autoincrement())
-  email         String      @unique
-  username      String      @unique
-  password      String
-  firstName     String      @db.VarChar(35)
-  lastName      String      @db.VarChar(35)
-  isAdmin       Boolean     @default(false)
-  interests     User_Interest[]
-  wishlist      Wishlist?
-  bookings      Booking[]
+  id        Int             @id @default(autoincrement())
+  email     String          @unique
+  username  String          @unique
+  password  String
+  firstName String          @db.VarChar(35)
+  lastName  String          @db.VarChar(35)
+  isAdmin   Boolean         @default(false)
+  interests User_Interest[]
+  wishlist  Wishlist[]
+  bookings  Booking[]
 }
 
 model Destination {
-  id                Int           @id @default(autoincrement())
-  name              String        @db.VarChar(35)
-  country           String        @db.VarChar(35)
-  description       String     
-  time_to_visit     String
-  average_cost      Int
-  imageURL          String
-  currency          String?
-  language          String?
-  interests         Destination_Interest[]
-  wishlist          Wishlist[]
-  bookings          Booking[]
-  attractions       Attraction[]
+  id            Int                    @id @default(autoincrement())
+  name          String                 @db.VarChar(35)
+  country       String                 @db.VarChar(35)
+  description   String
+  time_to_visit String
+  average_cost  Int
+  imageURL      String
+  currency      String?
+  language      String?
+  interests     Destination_Interest[]
+  wishlist      Wishlist[]
+  bookings      Booking[]
+  attractions   Attraction[]
 }
 
 model Interest {
-  id                Int           @id @default(autoincrement())
-  name              String        @db.VarChar(35)
-  description       String
-  imageURL          String
-  users             User_Interest[]
-  destinations      Destination_Interest[]
+  id           Int                    @id @default(autoincrement())
+  name         String                 @db.VarChar(35)
+  description  String
+  imageURL     String
+  users        User_Interest[]
+  destinations Destination_Interest[]
 }
 
 model Attraction {
-  id                Int           @id @default(autoincrement())
-  name              String        @db.VarChar(35)
-  imageURL          String
-  destinationId     Int
-  Destination       Destination  @relation(fields: [destinationId], references: [id])
+  id            Int         @id @default(autoincrement())
+  name          String      @db.VarChar(35)
+  imageURL      String
+  destinationId Int
+  Destination   Destination @relation(fields: [destinationId], references: [id])
 }
 
 model Wishlist {
-  id                Int          @id @default(autoincrement())
-  userId            Int          @unique
-  destinationId     Int
-  User              User         @relation(fields: [userId], references: [id])
-  Destination       Destination  @relation(fields: [destinationId], references: [id])
+  id            Int           @id @default(autoincrement())
+  userId        Int           
+  destinationId Int
+  User          User          @relation(fields: [userId], references: [id])
+  Destination   Destination[]
 }
 
 model Booking {
-  id                Int @id @default(autoincrement())
-  userId            Int
-  destinationId     Int
-  type              Type @default(WISHLIST)
-  booking_date      DateTime?
-  start_date        DateTime?
-  end_date          DateTime?
-  User              User        @relation(fields: [userId], references: [id])
-  Destination       Destination @relation(fields: [destinationId], references: [id])
+  id            Int         @id @default(autoincrement())
+  userId        Int
+  destinationId Int
+  type          Type        @default(WISHLIST)
+  booking_date  DateTime?
+  start_date    DateTime?
+  end_date      DateTime?
+  User          User        @relation(fields: [userId], references: [id])
+  Destination   Destination @relation(fields: [destinationId], references: [id])
 }
 
 model User_Interest {
-  userId            Int
-  interestId        Int
-  User              User     @relation(fields: [userId], references: [id])
-  Interest          Interest @relation(fields: [interestId], references: [id])
+  userId     Int
+  interestId Int
+  User       User     @relation(fields: [userId], references: [id])
+  Interest   Interest @relation(fields: [interestId], references: [id])
 
   @@id([userId, interestId])
 }
 
 model Destination_Interest {
-  destinationId     Int
-  Destination       Destination @relation(fields: [destinationId], references: [id])
-  interestId        Int
-  Interest          Interest    @relation(fields: [interestId], references: [id])
+  destinationId Int
+  Destination   Destination @relation(fields: [destinationId], references: [id])
+  interestId    Int
+  Interest      Interest    @relation(fields: [interestId], references: [id])
 
   @@id([destinationId, interestId])
 }
+
 enum Type {
   WISHLIST
   BOOKING

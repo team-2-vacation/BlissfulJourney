@@ -25,7 +25,6 @@ const App = () => {
   return (
     <>
       <Navbar token={token} isAdmin={isAdmin} />
-      <h1>Home Page</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
