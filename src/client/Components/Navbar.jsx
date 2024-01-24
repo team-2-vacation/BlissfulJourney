@@ -11,7 +11,7 @@ const Navbar = ({ token, isAdmin }) => {
 
   return (
     <nav class="bg-white">
-      <div class="mx-auto px-3">
+      <div class="container mx-auto px-3">
         <div class="flex justify-between">
           <div class="flex space-x-4">
             <Link to="/" class="flex items-center py-4 px-2 text-gray-700 hover:text-gray-900">
