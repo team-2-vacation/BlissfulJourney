@@ -1,18 +1,17 @@
+import "./App.css";
+import Login from "./Components/Login.jsx";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Account from "./Components/Account.jsx";
-import AllDestinations from './Components/AllDestinations.jsx';
-import AllInterests from "./Components/AllInterests.jsx";
-import Attractions from "./Components/Attractions.jsx";
-import Home from "./Components/Home.jsx";
-import Login from "./Components/Login.jsx";
-import Navbar from "./Components/Navbar.jsx";
-import Quiz from "./Components/Quiz.jsx";
 import Register from "./Components/Register.jsx";
-import SingleInterest from "./Components/SingleInterest.jsx";
+import Home from "./Components/Home.jsx";
+import AllDestinations from './Components/AllDestinations.jsx'
 import SingleDestination from "./Components/SingleDestination.jsx";
+import Navbar from "./Components/Navbar.jsx"
+import Account from "./Components/Account.jsx"
+import Attractions from "./Components/Attractions.jsx";
 import Wishlist from "./Components/Wishlist.jsx";
+import Quiz from "./Components/Quiz.jsx";
+
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -25,19 +24,16 @@ const App = () => {
   return (
     <>
       <Navbar token={token} isAdmin={isAdmin} />
-      <h1>Home Page</h1>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
-        <Route path='/attractions/:id' element={<Attractions/>} /> 
         <Route path='/destinations' element={<AllDestinations />} />
         <Route path='/destinations/:id' element={<SingleDestination />} /> 
-        <Route path='/interests' element={<AllInterests />} />
-        <Route path='/intersts/:id' element={<SingleInterest />} />
+        <Route path='/attractions/:id' element={<Attractions/>} /> 
         <Route path="/login" element={<Login setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} userId={userId} />} />
-        <Route path="/quiz" element={<Quiz />} />
         <Route path="/register" element={<Register setToken={setToken} />} />
+        <Route path="/account" element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
         <Route path="/wishlist" element={<Wishlist token={token} />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
     </>
   );
