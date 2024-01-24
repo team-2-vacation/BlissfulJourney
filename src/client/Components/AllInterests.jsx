@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InterestForm from "./InterestForm";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const Interest = () => {
     const [interests, setInterests] = useState([]);
@@ -76,3 +76,4 @@ const Interest = () => {
         </>
     )
 }
+export default Interest;

@@ -1,7 +1,7 @@
-import axios from "axios";
-import DestinationForm from "./DestinationForm";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import DestinationForm from "./DestinationForm";
 
 const Destination = () => {
     const [destinations, setDestinations] = useState([]);

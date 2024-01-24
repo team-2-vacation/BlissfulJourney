@@ -14,7 +14,8 @@ const Navbar = ({ token, isAdmin }) => {
       </div>
       <div>
         <Link to="/destinations">Destinations</Link>
-        {/* <Link to="/interests">Browse By Interest</Link>
+        <Link to="/interests">Browse By Interest</Link>
+        {/* 
         <Link to="/quiz">Take Our Vacation Quiz</Link>
         search bar */}
         {token ? (<Link to="/account">Account</Link>) : (
