@@ -61,7 +61,7 @@ model Wishlist {
   userId        Int           
   destinationId Int
   User          User          @relation(fields: [userId], references: [id])
-  Destination   Destination[]
+  Destination   Destination   @relation(fields: [destinationId], references: [id])
 }
 
 model Booking {
