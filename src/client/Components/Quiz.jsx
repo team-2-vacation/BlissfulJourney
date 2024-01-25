@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Quiz() {
+const Quiz = () => {
   const [cultureCount, setCultureCount] = useState(0);
   const [relaxingCount, setRelaxingCount] = useState(0);
   const [outdoorCount, setOutdoorCount] = useState(0);

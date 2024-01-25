@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const Account = ({setToken, setIsAdmin, setUserId}) => {
     const navigate = useNavigate()
     const [user, setUser] = useState({})
+    const [interests, setInterests] = useState()
 
     const logOut = () => {
 
@@ -27,7 +28,20 @@ const Account = ({setToken, setIsAdmin, setUserId}) => {
       console.log(error)
     }
   }
+
+  const getInterests = async() => {
+  try {
+    const interestData = await axios.get(`/api/users_interests/${userId}`)
+    // console.log("interestData", interestData.data)
+    setInterests(interestData.data)
+    console.log("interests", interestData.data)
+  } catch (error) {
+    console.log(error)
+  }
+  }
+
   getUser();
+  getInterests();
 }, []);
 
   return (
@@ -35,8 +49,19 @@ const Account = ({setToken, setIsAdmin, setUserId}) => {
       <h1>Name: {user.firstName} {user.lastName}</h1>
       <h1>Email: {user.email}</h1>
       <h1>Username: {user.username}</h1>
-      <ul>My Interests</ul>
-        {/* <li>{interest}</li> */}
+      <ul>My Interests
+        
+       <div>
+       <br />
+        {interests?.map((int) => (
+          <div key={int.interestId}>
+            <h2>{int.Interest.name}</h2>
+            <h3>{int.Interest.description}</h3>
+            <br />
+            </div>
+        ))}
+       </div>
+       </ul>
       <h1>Vacation Wishlist: </h1>
       <button onClick={logOut}>Log Out</button>
   </>

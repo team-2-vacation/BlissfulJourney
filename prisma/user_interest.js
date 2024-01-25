@@ -27,5 +27,29 @@ const getUserInterest = async( userId, interestId ) => {
   return existingJoin
 }
 
+const getInterestsByUser = async( userId ) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {id: userId},
+      include: {
+        interests: {
+          include: {
+            Interest: true,
 
-module.exports = { getUserInterest, createUserInterest, getAllUserInterests }
+          }
+        }
+      }
+    })
+
+    const interests = user.interests
+  
+    console.log("interests")
+    console.log(interests)
+
+    return interests
+  } catch (error) {
+    console.error('Error fetching user interests:', error)
+  }
+  
+}
+module.exports = { getUserInterest, createUserInterest, getAllUserInterests, getInterestsByUser }
