@@ -3,13 +3,13 @@ const router = express.Router();
 const prisma = require('../../../prisma/client');
 const verify = require("../util");
 
-router.get("/", verify, async (req, res, next) => {
+router.get("/", verify, async (req, res) => {
     try {
         const wishlist = await prisma.wishlist.findMany({
             where: {userId: +req.user.id,},
         });
         console.log("wishlist", wishlist)
-        res.status(200).send(wishlist);
+        res.send(wishlist);
     } catch (error) {
         console.log(error)
     }
