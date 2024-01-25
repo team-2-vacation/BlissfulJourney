@@ -39,7 +39,7 @@ const DestinationForm = ({ onClose, destinationToEdit }) => {
 
         try {
             if (destinationToEdit) {
-                await axios.put(`/api/destinations/${destinationToEdit.id}`, destinationData);
+                await axios.patch(`/api/destinations/${destinationToEdit.id}`, destinationData);
             } else {
                 await axios.post(`/api/destinations`, destinationData);
             }
@@ -50,36 +50,58 @@ const DestinationForm = ({ onClose, destinationToEdit }) => {
     };
 
     return (
-        <>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+        <div className="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-7xl mx-auto">
+            <form className="mb-4" onSubmit={handleSubmit}>
+                <h1 className="text-3xl font-semibold mb-6 text-center text-gray-800">Add/Edit Destination</h1>
 
-            <label htmlFor="country">Country:</label>
-            <input type="text" id="country" value={country} onChange={(e) => setCountry(e.target.value)} required />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="name">Name:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="country">Country:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="country" value={country} onChange={(e) => setCountry(e.target.value)} required />
+                    </div>
 
-            <label htmlFor="description">Description:</label>
-            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
+                    <div className="md:col-span-2">
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="description">Description:</label>
+                        <textarea className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="description" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
+                    </div>
 
-            <label htmlFor="time_to_visit">Time to Visit:</label>
-            <input type="text" id="time_to_visit" value={timeToVisit} onChange={(e) => setTimeToVisit(e.target.value)} />
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="time_to_visit">Time to Visit:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="time_to_visit" placeholder="optional" value={timeToVisit} onChange={(e) => setTimeToVisit(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="average_cost">Average Cost:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="number" id="average_cost" placeholder="0.00" value={averageCost} onChange={(e) => setAverageCost(e.target.value)} />
+                    </div>
 
-            <label htmlFor="average_cost">Average Cost:</label>
-            <input type="number" id="average_cost" value={averageCost} onChange={(e) => setAverageCost(e.target.value)} />
+                    <div className="md:col-span-2">
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="imageURL">Image URL:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="imageURL" placeholder="optional" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
+                    </div>
 
-            <label htmlFor="imageURL">Image URL:</label>
-            <input type="text" id="imageURL" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
-
-            <label htmlFor="currency">Currency:</label>
-            <input type="text" id="currency" value={currency} onChange={(e) => setCurrency(e.target.value)} />
-
-            <label htmlFor="language">Language:</label>
-            <input type="text" id="language" value={language} onChange={(e) => setLanguage(e.target.value)} />
-
-            <button type="submit">{destinationToEdit ? "Edit Destination" : "Add Destination"}</button>
-            <button type="button" onClick={onClose}>Cancel</button>
-        </form>
-    </>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="currency">Currency:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="currency" placeholder="optional" value={currency} onChange={(e) => setCurrency(e.target.value)} />
+                    </div>
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="language">Language:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="language" placeholder="optional" value={language} onChange={(e) => setLanguage(e.target.value)} />
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition ease-in-out duration-300">
+                        {destinationToEdit ? "Update" : "Submit"}
+                    </button>
+                    <button onClick={onClose} class="bg-gray-200 hover:bg-gray-500 text-blue-800 font-semibold py-2 px-4 rounded shadow transition ease-in-out duration-300">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 }
 export default DestinationForm;
