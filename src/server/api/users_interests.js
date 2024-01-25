@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getUserInterest, getAllUserInterests, createUserInterest } = require("../../../prisma/user_interest")
-
-// /api/users_interests/
+const { getUserInterest, getAllUserInterests, createUserInterest, getInterestsByUser } = require("../../../prisma/user_interest")
 
 router.get("/", async (req, res, next) => {
   try {
@@ -25,6 +23,16 @@ router.post("/", async (req, res, next) => {
   }
 })
 
-
+// GET all user interests for a specific user
+router.get("/:userId", async (req, res, next) => {
+  const userId = parseInt(req.params.userId);
+  try {
+    const userInterests = await getInterestsByUser(userId);
+    res.send(userInterests);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 module.exports = router;
