@@ -72,7 +72,6 @@ function Quiz() {
     setOutdoorCount(0);
     // setHighScoreCategories([])
   };
-
   return (
     <div>
       <h2>Blissful Journey Quiz</h2>
@@ -113,7 +112,6 @@ function Quiz() {
             Local Festivals
           </label>
         </div>
-
         <div>
           <p>2. If you had a day to yourself, what would you most likely choose to do?</p>
           <label>
@@ -149,7 +147,6 @@ function Quiz() {
             Embark on an adventure exploring new landscapes and natural wonders.
           </label>
         </div>
-
         <div>
           <p>3. Which setting appeals to you the most for exploration?</p>
           <label>
@@ -185,7 +182,6 @@ function Quiz() {
             Hidden Gems
           </label>
         </div>
-
         <div>
           <p>4. Which of these is the most important part of taking a break?</p>
           <label>
@@ -221,7 +217,6 @@ function Quiz() {
             Getting fresh air and connecting to the natural world around you
           </label>
         </div>
-
         <br />
         <button type="submit">Submit</button>
         <br />
@@ -235,7 +230,7 @@ function Quiz() {
       {highScoreCategories.length > 0 && (
         <div>
           <h3>
-            You're a traveler! You have {highScoreCategories.length} interest(s)!
+            You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
             {highScoreCategories.map((interest) => (
               <div key={interest}>
                 <h3>Traveler type: {interest}</h3>
@@ -254,5 +249,4 @@ function Quiz() {
     </div>
   );
 }
-
 export default Quiz;
