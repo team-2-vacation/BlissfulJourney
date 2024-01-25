@@ -4,7 +4,6 @@ const getAllUserInterests = async() => {
   const allUserInterests = await prisma.user_Interest.findMany()
   return allUserInterests
 }
-
 const createUserInterest = async( userId, interestId ) => {
   const userInterest = await prisma.user_Interest.create({
     data: {
@@ -14,7 +13,6 @@ const createUserInterest = async( userId, interestId ) => {
   })
   return userInterest
 }
-
 const getUserInterest = async( userId, interestId ) => {
   existingJoin = await prisma.user_Interest.findFirst({
     where: {
@@ -26,6 +24,23 @@ const getUserInterest = async( userId, interestId ) => {
   });
   return existingJoin
 }
+const getInterestsByUser = async( userId ) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {id: userId},
+      include: {
+        interests: {
+          include: {
+            Interest: true,
 
-
-module.exports = { getUserInterest, createUserInterest, getAllUserInterests }
+          }
+        }
+      }
+    })
+    const interests = user.interests
+    return interests
+  } catch (error) {
+    console.error('Error fetching user interests:', error)
+  }
+}
+module.exports = { getUserInterest, createUserInterest, getAllUserInterests, getInterestsByUser }
