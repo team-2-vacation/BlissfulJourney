@@ -7,6 +7,9 @@ router.get("/", verify, async (req, res, next) => {
     try {
         const wishlist = await prisma.wishlist.findMany({
             where: {userId: +req.user.id,},
+            include: {
+                Destination: true, 
+            },
         });
         console.log("wishlist", wishlist)
         res.status(200).send(wishlist);
