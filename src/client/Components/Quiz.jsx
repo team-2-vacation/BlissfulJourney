@@ -10,34 +10,27 @@ const Quiz = () => {
   function refreshPage() {
     window.location.reload();
   }
-
   const handleAddCulture = async () => {
     const userId = window.localStorage.getItem("Id");
-    console.log("userId", userId);
     const result = await axios.post("/api/users_interests", {
       userId: +userId,
       interestId: 1,
-    }); 
+    });
   };
-
   const handleAddOutdoor = async () => {
     const userId = window.localStorage.getItem("Id");
-    console.log("userId", userId);
     const result = await axios.post("/api/users_interests", {
       userId: +userId,
       interestId: 2,
-    }); 
+    });
   };
-
   const handleAddRelax = async () => {
     const userId = window.localStorage.getItem("Id");
-    console.log("userId", userId);
     const result = await axios.post("/api/users_interests", {
       userId: +userId,
       interestId: 3,
-    }); 
+    });
   };
-  
   const addInterests = () => {
     highScoreCategories.forEach(async (element) => {
       if (element === "Culture Traveler") {
@@ -49,12 +42,9 @@ const Quiz = () => {
       }
     });
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const maxCount = Math.max(cultureCount, relaxingCount, outdoorCount);
-
     const updatedHighScoreCategories = [];
     if (cultureCount === maxCount) {
       updatedHighScoreCategories.push("Culture Traveler");
@@ -70,9 +60,7 @@ const Quiz = () => {
     setCultureCount(0);
     setRelaxingCount(0);
     setOutdoorCount(0);
-    // setHighScoreCategories([])
   };
-
   return (
     <div>
       <h2>Blissful Journey Quiz</h2>
@@ -185,7 +173,6 @@ const Quiz = () => {
             Hidden Gems
           </label>
         </div>
-
         <div>
           <p>4. Which of these is the most important part of taking a break?</p>
           <label>
@@ -253,6 +240,5 @@ const Quiz = () => {
       )}
     </div>
   );
-}
-
+};
 export default Quiz;
