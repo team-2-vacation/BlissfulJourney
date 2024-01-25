@@ -42,7 +42,6 @@ const SingleDestination = () => {
             {headers: { Authorization: "Bearer " + window.localStorage.getItem("TOKEN"),
         },
         })
-    console.log("data", data)
     }
          catch (error) {
             console.log(error)

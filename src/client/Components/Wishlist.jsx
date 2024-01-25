@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = ({token}) => {
     const [wishlist, setWishlist] = useState([])
+    const navigate = useNavigate();
     useEffect(() => {
         const getWishlist = async() => {
             try {
@@ -19,6 +21,28 @@ const Wishlist = ({token}) => {
         }
         getWishlist();
     }, [])
+
+    const removeFromWishlistHandle = async (id, wishlistItem) => {
+        const isConfirmed = window.confirm("Are you sure you want to remove this from your wishlist?");
+        if (isConfirmed) {
+            try {
+                const wishlistItemId = +wishlistItem.id
+                const removeFromWishlist = await axios.delete(`/api/wishlist/${id}`,  {
+                    headers: {
+                        Authorization: "Bearer " + window.localStorage.getItem("TOKEN"),
+                    },
+                    data: {
+                        wishlistItemId
+                    }
+                });
+                window.alert(removeFromWishlist.data.message)
+                navigate("/wishlist")
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
+
     return (
         <div>
             {!token ? <h1>You Must Be Logged In To See Your Wishlist!</h1> : <h1>Your Destination WishList</h1>}
@@ -37,6 +61,9 @@ const Wishlist = ({token}) => {
                                 <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
                                     <Link to={`/destinations/${wishlistItem.Destination.id}`}>
                                         <h3 className="text-2xl font-semibold mb-3">{wishlistItem.Destination.name}</h3>
+                                        <button onClick={() => removeFromWishlistHandle(wishlistItem.Destination.id, wishlistItem)}
+                                                className="text-sm bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded">
+                                                Remove From Wishlist</button>
                                     </Link>
                                 </div>
                             </div>

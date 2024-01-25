@@ -11,7 +11,6 @@ router.get("/", verify, async (req, res, next) => {
                 Destination: true, 
             },
         });
-        console.log("wishlist", wishlist)
         res.status(200).send(wishlist);
     } catch (error) {
         console.log(error)
@@ -44,4 +43,25 @@ router.post("/destination/:id", verify, async(req, res, next) => {
         console.log(error)
     }
 })
+
+router.delete("/:id", verify, async (req, res, next) => {
+    const destinationId = +req.params.id;
+    const userId = +req.user.id;
+    const wishlistItemId = +req.body.wishlistItemId;
+    
+    try {
+        const removedDestination = await prisma.wishlist.delete({
+            where: {
+                id: wishlistItemId,
+                userId,
+                destinationId
+            }
+        })
+        res.send({message: "Destination successfully removed from wishlist."})
+        return
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router;
