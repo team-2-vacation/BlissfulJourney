@@ -242,6 +242,8 @@ const Quiz = () => {
         <div>
           <h3 className="text-orange-300">
             You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
+          <h3 className="text-orange-300">
+            You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
             {highScoreCategories.map((interest) => (
               <div key={interest}>
                 <h3>Traveler type: {interest}</h3>
@@ -257,7 +259,7 @@ const Quiz = () => {
 
             <button type="button" className="bg-orange-400 text-orange-50 py-2 px-4 rounded-md" onClick={refreshPage}>
               <span>Want to take the quiz again? Reload here!</span>
-            </button >
+            </button  >
           </h3>
         </div>
       )}
