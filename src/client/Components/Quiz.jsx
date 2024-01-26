@@ -79,9 +79,7 @@ const Quiz = () => {
               Museums
             </label>
             <br />
-
             <label className="text-orange-300">
-
               <input
                 type="radio"
                 name="experience"
@@ -92,7 +90,6 @@ const Quiz = () => {
               Cafes
             </label>
             <br />
-
             <label className="text-orange-300">
               <input
                 type="radio"
@@ -112,7 +109,6 @@ const Quiz = () => {
       {questionTracker === 1 && (
         <form onSubmit={handleSubmit}>
           <div>
-
             <p className="font-semibold text-orange-300">2. If you had a day to yourself, what would you most likely choose to do?</p>
             <label className="text-orange-300">
               <input
@@ -242,24 +238,21 @@ const Quiz = () => {
         <div>
           <h3 className="text-orange-300">
             You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
-          <h3 className="text-orange-300">
-            You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
+            <h3 />
             {highScoreCategories.map((interest) => (
               <div key={interest}>
                 <h3>Traveler type: {interest}</h3>
               </div>
             ))}
             <br />
-
             <button type="button" className="bg-orange-300  text-orange-50 py-2 px-4 rounded-md" onClick={addInterests}>
               Want to link your results to your profile? Click here!
             </button>
             <br />
             <br />
-
             <button type="button" className="bg-orange-400 text-orange-50 py-2 px-4 rounded-md" onClick={refreshPage}>
               <span>Want to take the quiz again? Reload here!</span>
-            </button  >
+            </button >
           </h3>
         </div>
       )}
