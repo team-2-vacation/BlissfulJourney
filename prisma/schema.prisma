@@ -33,6 +33,7 @@ model Destination {
   imageURL      String
   currency      String?
   language      String?
+  externalURL   String?
   interests     Destination_Interest[]
   wishlist      Wishlist[]
   bookings      Booking[]
