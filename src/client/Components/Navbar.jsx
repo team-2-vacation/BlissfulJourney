@@ -20,6 +20,7 @@ const Navbar = ({ token, isAdmin }) => {
             </Link>
             <div class="hidden md:flex items-center space-x-1">
               <Link class="py-4 px-2 text-gray-700  hover:text-gray-900 " to="/destinations">Destinations</Link>
+              <Link class="py-4 px-2 text-gray-700  hover:text-gray-900 " to="/attractions">Attractions</Link>
               <Link class="py-4 px-2 text-gray-700  hover:text-gray-900" to="/interests">Browse By Interest</Link>
               <Link class="py-4 px-2 text-gray-700  hover:text-gray-900" to="/quiz">Take Our Vacation Quiz</Link>
             </div>
