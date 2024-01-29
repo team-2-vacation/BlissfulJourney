@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Quiz = () => {
   const [cultureCount, setCultureCount] = useState(0);
@@ -67,7 +68,9 @@ const Quiz = () => {
           <p className="text-orange-300">Take our quiz and find out what kind of traveler you are!</p>
           <br />
           <div>
-            <p className="font-semibold text-orange-300">1. Which travel experience appeals to you the most for cultural exploration?</p>
+            <p className="font-semibold text-orange-300">
+              1. Which travel experience appeals to you the most for cultural exploration?
+            </p>
             <label className="text-orange-300">
               <input
                 type="radio"
@@ -102,14 +105,18 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">Submit</button>
+          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+            Submit
+          </button>
           <br />
         </form>
       )}
       {questionTracker === 1 && (
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-semibold text-orange-300">2. If you had a day to yourself, what would you most likely choose to do?</p>
+            <p className="font-semibold text-orange-300">
+              2. If you had a day to yourself, what would you most likely choose to do?
+            </p>
             <label className="text-orange-300">
               <input
                 type="radio"
@@ -146,15 +153,17 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit"  className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">Submit</button>
+          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+            Submit
+          </button>
           <br />
         </form>
       )}
       {questionTracker === 2 && (
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-semibold text-orange-300 " >3. Which setting appeals to you the most for exploration?</p>
-            <label  className="text-orange-300">
+            <p className="font-semibold text-orange-300 ">3. Which setting appeals to you the most for exploration?</p>
+            <label className="text-orange-300">
               <input
                 type="radio"
                 name="setting"
@@ -165,7 +174,7 @@ const Quiz = () => {
               Cultural District
             </label>
             <br />
-            <label  className="text-orange-300">
+            <label className="text-orange-300">
               <input
                 type="radio"
                 name="setting"
@@ -188,14 +197,18 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">Submit</button>
+          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+            Submit
+          </button>
           <br />
         </form>
       )}
       {questionTracker === 3 && (
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-semibold text-orange-300">4. Which of these is the most important part of taking a break?</p>
+            <p className="font-semibold text-orange-300">
+              4. Which of these is the most important part of taking a break?
+            </p>
             <label className="text-orange-300">
               <input
                 type="radio"
@@ -230,7 +243,9 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-white py-2 px-4 rounded-md">Submit</button>
+          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+            Submit
+          </button>
           <br />
         </form>
       )}
@@ -239,11 +254,39 @@ const Quiz = () => {
           <h3 className="text-orange-300">
             You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
             <h3 />
-            {highScoreCategories.map((interest) => (
-              <div key={interest}>
-                <h3>Traveler type: {interest}</h3>
-              </div>
-            ))}
+            {highScoreCategories.map((interest) => {
+              if (interest === "Culture Traveler") {
+                return (
+                  <h1 className="text-orange-300">
+                    It looks like you're a culture focused traveler-click{" "}
+                    <Link className="text-orange-500 underline" key={interest} to={`/interests/1`}>
+                      here
+                    </Link>{" "}
+                    to find out more!
+                  </h1>
+                );
+              } else if (interest === "Outdoor Traveler") {
+                return (
+                  <h1 className="text-orange-300">
+                    It looks like you're an outdoors focused traveler-click{" "}
+                    <Link className="text-orange-500 underline" key={interest} to={`/interests/2`}>
+                      here
+                    </Link>{" "}
+                    to find out more!
+                  </h1>
+                );
+              } else if (interest === "Relaxing Traveler") {
+                return (
+                  <h1 className="text-orange-300">
+                    It looks like you're a relaxation focused traveler-click{" "}
+                    <Link className="text-orange-500 underline" key={interest} to={`/interests/3`}>
+                      here
+                    </Link>{" "}
+                    to find out more!
+                  </h1>
+                );
+              }
+            })}
             <br />
             <button type="button" className="bg-orange-300  text-orange-50 py-2 px-4 rounded-md" onClick={addInterests}>
               Want to link your results to your profile? Click here!
@@ -252,7 +295,7 @@ const Quiz = () => {
             <br />
             <button type="button" className="bg-orange-400 text-orange-50 py-2 px-4 rounded-md" onClick={refreshPage}>
               <span>Want to take the quiz again? Reload here!</span>
-            </button >
+            </button>
           </h3>
         </div>
       )}
