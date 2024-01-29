@@ -38,7 +38,7 @@ const App = () => {
         <Route path='/interests/:id' element={<SingleInterest />} /> 
         <Route path='/login' element={<Login setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} userId={userId} />} />
         <Route path='/quiz' element={<Quiz />} />
-        <Route path='/register' element={<Register setToken={setToken} />} />
+        <Route path='/register' element={<Register setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} />} />
         <Route path='/wishlist' element={<Wishlist token={token} />} />
       </Routes>
     </>
