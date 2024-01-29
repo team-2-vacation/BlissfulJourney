@@ -13,6 +13,7 @@ import Quiz from "./Components/Quiz.jsx";
 import Navbar from "./Components/Navbar.jsx"
 import Register from "./Components/Register.jsx";
 import Wishlist from "./Components/Wishlist.jsx";
+import SingleAttraction from "./Components/SingleAttraction.jsx";
 
 
 const App = () => {
