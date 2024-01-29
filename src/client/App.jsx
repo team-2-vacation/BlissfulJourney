@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Account from "./Components/Account.jsx"
-import Attractions from "./Components/Attractions.jsx";
+import AllAttractions from "./Components/AllAttractions.jsx";
 import AllDestinations from './Components/AllDestinations.jsx'
 import SingleDestination from "./Components/SingleDestination.jsx";
 import AllInterests from './Components/AllInterests.jsx'
@@ -29,7 +29,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/account' element={<Account setToken={setToken} setIsAdmin={setIsAdmin} setUserId={setUserId} />}/>
-        <Route path='/attractions' element={<Attractions/>} />
+        <Route path='/attractions' element={<AllAttractions/>} />
         <Route path='/attractions/:id' element={<SingleAttraction/>} />  
         <Route path='/destinations' element={<AllDestinations />} />
         <Route path='/destinations/:id' element={<SingleDestination />} /> 
