@@ -43,4 +43,21 @@ const getInterestsByUser = async( userId ) => {
     console.error('Error fetching user interests:', error)
   }
 }
-module.exports = { getUserInterest, createUserInterest, getAllUserInterests, getInterestsByUser }
+
+const deleteUserInterest = async( userId, interestId ) => {
+  try {
+    const deletedUserInterest = await prisma.user_Interest.delete({
+      where: {
+        userId_interestId: {
+          userId,
+          interestId,
+        },
+      },
+    });
+    return deleteUserInterest;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+module.exports = { getUserInterest, createUserInterest, getAllUserInterests, getInterestsByUser, deleteUserInterest }

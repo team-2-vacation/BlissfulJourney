@@ -16,6 +16,18 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
     setUserId(null);
     navigate("/");
   };
+
+  const handleDelete = async (userId, interestId) => {
+    try {
+      const response = await axios.delete(`/api/users_interests`, {
+        data: { userId, interestId },
+      });
+      setInterests((prevInterests) => prevInterests.filter((int) => int.interestId !== interestId));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     const userId = window.localStorage.getItem("Id") || null;
     const getUser = async () => {
@@ -54,6 +66,9 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
             <div key={int.interestId}>
               <h2>{int.Interest.name}</h2>
               <h3>{int.Interest.description}</h3>
+              <button className="delete-button" onClick={() => handleDelete(user.id, int.interestId)}>
+                X
+              </button>
               <br />
             </div>
           ))}
