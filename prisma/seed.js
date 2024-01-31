@@ -4,7 +4,8 @@ const {createUser} = require("./users");
 const {createInterests} = require("./interests");
 const {createDestinations} = require("./destinations");
 const {createAttractions} = require("./attractions");
-const {createUserInterest} = require("./user_interest")
+const {createUserInterest} = require("./user_interest");
+const { createDestinationInterest } = require("./destination_interest");
 
 const seed = async() => {
 
@@ -69,6 +70,28 @@ const regionalPark = await createAttractions("Pacific Spirit Regional Park", "ht
 const john_culture = await createUserInterest(john.id, culture.id)
 const jack_outdoor = await createUserInterest(jack.id, outdoor.id)
 const jill_relaxing = await createUserInterest(jill.id, relaxing.id)
+
+const parisInterest = await createDestinationInterest(paris.id, culture.id)
+const baliInterest = await createDestinationInterest(bali.id, relaxing.id)
+const reykjavikInterest = await createDestinationInterest(reykjavik.id, outdoor.id)
+const romeInterest = await createDestinationInterest(rome.id, culture.id)
+const kyotoInterest = await createDestinationInterest(kyoto.id, relaxing.id)
+const vancouverInterest = await createDestinationInterest(vancouver.id, outdoor.id)
+const mauiInterest = await createDestinationInterest(maui.id, relaxing.id)
+const boraboraInterest = await createDestinationInterest(borabora.id, relaxing.id)
+const santoriniInterest = await createDestinationInterest(santorini.id, culture.id)
+const barcelonaInterest = await createDestinationInterest(barcelona.id, culture.id)
+const londonInterest = await createDestinationInterest(london.id, culture.id)
+const capetownInterest = await createDestinationInterest(capetown.id, outdoor.id)
+const singaporeInterest = await createDestinationInterest(singapore.id, relaxing.id)
+const sydneyInterest = await createDestinationInterest(sydney.id, outdoor.id)
+const rioInterest = await createDestinationInterest(rio.id, outdoor.id)
+const phuketInterest = await createDestinationInterest(phuket.id, outdoor.id)
+const dubaiInterest = await createDestinationInterest(dubai.id, relaxing.id)
+const berlinInterest = await createDestinationInterest(berlin.id, relaxing.id)
+const moscowInterest = await createDestinationInterest(moscow.id, culture.id)
+const beijingInterest = await createDestinationInterest(beijing.id, culture.id)
+const queenstownInterest = await createDestinationInterest(queenstown.id, outdoor.id)
 
 }
 seed()
