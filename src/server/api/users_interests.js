@@ -30,7 +30,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// GET all user interests for a specific user
 router.get("/:userId", async (req, res, next) => {
   const userId = parseInt(req.params.userId);
   try {

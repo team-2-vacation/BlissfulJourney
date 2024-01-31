@@ -253,50 +253,49 @@ const Quiz = () => {
         <div>
           <h3 className="text-orange-300">
             You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
-            <h3 />
-            {highScoreCategories.map((interest) => {
-              if (interest === "Culture Traveler") {
-                return (
-                  <h1 className="text-orange-300">
-                    It looks like you're a culture focused traveler-click{" "}
-                    <Link className="text-orange-500 underline" key={interest} to={`/interests/1`}>
-                      here
-                    </Link>{" "}
-                    to find out more!
-                  </h1>
-                );
-              } else if (interest === "Outdoor Traveler") {
-                return (
-                  <h1 className="text-orange-300">
-                    It looks like you're an outdoors focused traveler-click{" "}
-                    <Link className="text-orange-500 underline" key={interest} to={`/interests/2`}>
-                      here
-                    </Link>{" "}
-                    to find out more!
-                  </h1>
-                );
-              } else if (interest === "Relaxing Traveler") {
-                return (
-                  <h1 className="text-orange-300">
-                    It looks like you're a relaxation focused traveler-click{" "}
-                    <Link className="text-orange-500 underline" key={interest} to={`/interests/3`}>
-                      here
-                    </Link>{" "}
-                    to find out more!
-                  </h1>
-                );
-              }
-            })}
-            <br />
-            <button type="button" className="bg-orange-300  text-orange-50 py-2 px-4 rounded-md" onClick={addInterests}>
-              Want to link your results to your profile? Click here!
-            </button>
-            <br />
-            <br />
-            <button type="button" className="bg-orange-400 text-orange-50 py-2 px-4 rounded-md" onClick={refreshPage}>
-              <span>Want to take the quiz again? Reload here!</span>
-            </button>
           </h3>
+          {highScoreCategories.map((interest) => {
+            if (interest === "Culture Traveler") {
+              return (
+                <h1 className="text-orange-300">
+                  It looks like you're a culture focused traveler-click{" "}
+                  <Link className="text-orange-500 underline" key={interest} to={`/interests/1`}>
+                    here
+                  </Link>{" "}
+                  to find out more!
+                </h1>
+              );
+            } else if (interest === "Outdoor Traveler") {
+              return (
+                <h1 className="text-orange-300">
+                  It looks like you're an outdoors focused traveler-click{" "}
+                  <Link className="text-orange-500 underline" key={interest} to={`/interests/2`}>
+                    here
+                  </Link>{" "}
+                  to find out more!
+                </h1>
+              );
+            } else if (interest === "Relaxing Traveler") {
+              return (
+                <h1 className="text-orange-300">
+                  It looks like you're a relaxation focused traveler-click{" "}
+                  <Link className="text-orange-500 underline" key={interest} to={`/interests/3`}>
+                    here
+                  </Link>{" "}
+                  to find out more!
+                </h1>
+              );
+            }
+          })}
+          <br />
+          <button type="button" className="bg-orange-300  text-orange-50 py-2 px-4 rounded-md" onClick={addInterests}>
+            Want to link your results to your profile? Click here!
+          </button>
+          <br />
+          <br />
+          <button type="button" className="bg-orange-400 text-orange-50 py-2 px-4 rounded-md" onClick={refreshPage}>
+            <span>Want to take the quiz again? Reload here!</span>
+          </button>
         </div>
       )}
     </div>

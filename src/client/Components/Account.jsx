@@ -27,7 +27,7 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
       console.error(e);
     }
   };
-  
+
   useEffect(() => {
     const userId = window.localStorage.getItem("Id") || null;
     const getUser = async () => {
