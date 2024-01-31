@@ -38,16 +38,28 @@ const checkUserExistance = async(username, email) => {
       return existingUser;
 }
 
-const updateUser = async(id, email, username, password, firstName, lastName) => {
+const updateUser = async(id, email, username, firstName, lastName) => {
+    const userData = await getUser(id)
+    const data = {};
+    if (username === undefined || username === ""){ 
+        data.username = userData.username}
+    else {data.username = username}
+
+    if (firstName === undefined || firstName === ""){
+        data.firstName = userData.firstName}
+    else {data.firstName = firstName}
+
+    if (lastName === undefined || lastName === ""){
+        data.lastName = userData.lastName}
+    else {data.lastName = lastName}
+
+    if (email === undefined || email === ""){
+        data.email = userData.email}
+    else {data.email = email}
+
     const updatedUser = await prisma.user.update({
         where: { id },
-        data: {
-            email,
-            username,
-            password,
-            firstName,
-            lastName
-        }
+        data
     })
     return updatedUser;
 }

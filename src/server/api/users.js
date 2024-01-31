@@ -30,11 +30,10 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.patch("/:id", async (req, res, next) => {
-  const userId = parseInt(req.params.id);
-  const { email, username, password, firstName, lastName } = req.body;
-
+  const userId = +(req.params.id);
+  const { username, firstName, lastName, email } = req.body.data;
   try {  
-      const updatedUser = await updateUser(userId, email, username, password, firstName, lastName)
+      const updatedUser = await updateUser(userId, email, username, firstName, lastName)
       res.json(updatedUser)
   } catch (error) {
       console.error("Error updating user:", error);
