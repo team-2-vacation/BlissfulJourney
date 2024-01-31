@@ -6,6 +6,11 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [interests, setInterests] = useState();
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const logOut = () => {
     localStorage.removeItem("TOKEN");
@@ -16,6 +21,30 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
     setUserId(null);
     navigate("/");
   };
+
+  const updateUserHandle = async (e) => {
+    e.preventDefault()
+    const userId = window.localStorage.getItem("Id");
+    try {
+      const response = await axios.patch(`/api/users/${userId}`,{
+        data:{
+          username,
+          firstName,
+          lastName,
+          email
+        }
+      })
+    window.alert("Account Updated")
+    setUsername("");
+    setFirstName("")
+    setLastName("")
+    setEmail("")
+    setShowUpdateForm(false)
+    setUser(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleDelete = async (userId, interestId) => {
     try {
@@ -74,8 +103,33 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
           ))}
         </div>
       </ul>
-      <h1>Vacation Wishlist: </h1>
       <button onClick={logOut}>Log Out</button>
+      <br/>
+      <button onClick={() => setShowUpdateForm(true)}>Update Profile</button>
+          {showUpdateForm && (
+              <form>
+                <label>
+                  Username
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                </label>
+                <label>
+                  First Name
+                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                </label>
+                <label>
+                  Last Name
+                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+                </label>
+                <label>
+                  Email
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                </label>
+            <br/>
+            <button onClick={() => setShowUpdateForm(false)}>Cancel</button>
+            <br/>
+            <button onClick={updateUserHandle}>Update</button>
+              </form>
+          )}
     </>
   );
 };

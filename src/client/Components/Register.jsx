@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = ({ setToken, setIsAdmin, setUserId }) => {
   const [username, setUsername] = useState("");
@@ -7,6 +8,8 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,6 +27,7 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
       setToken(window.localStorage.getItem("TOKEN") || null);
       setIsAdmin(window.localStorage.getItem("Admin") || null);
       setUserId(window.localStorage.getItem("Id") || null);
+      navigate('/')
     } catch (error) {
       console.error(error);
     }
