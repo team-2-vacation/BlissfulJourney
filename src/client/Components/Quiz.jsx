@@ -61,17 +61,17 @@ const Quiz = () => {
     setQuestionTracker(questionTracker + 1);
   };
   return (
-    <div className="bg-yellow-900 p-8 rounded-lg shadow-md">
-      <h2 className="font-bold text-orange-300">Blissful Journey Quiz</h2>
+    <div className="bg-blissfulBlue-300 p-8 m-4 rounded-lg shadow-md border border-blissfulBlue-100 mx-auto max-w-md">
+      <h2 className="font-bold text-blissfulBlue-200">Blissful Journey Quiz</h2>
       {questionTracker === 0 && (
         <form onSubmit={handleSubmit}>
-          <p className="text-orange-300">Take our quiz and find out what kind of traveler you are!</p>
+          <p className="text-blissfulBlue-200">Take our quiz and find out what kind of traveler you are!</p>
           <br />
           <div>
-            <p className="font-semibold text-orange-300">
+            <p className="font-semibold text-blissfulBlue-200">
               1. Which travel experience appeals to you the most for cultural exploration?
             </p>
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="experience"
@@ -82,7 +82,7 @@ const Quiz = () => {
               Museums
             </label>
             <br />
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="experience"
@@ -93,7 +93,7 @@ const Quiz = () => {
               Cafes
             </label>
             <br />
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="experience"
@@ -105,7 +105,7 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+          <button type="submit" className="bg-blissfulBlue-100 text-blue-50 py-2 px-4 rounded-md">
             Submit
           </button>
           <br />
@@ -114,10 +114,10 @@ const Quiz = () => {
       {questionTracker === 1 && (
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-semibold text-orange-300">
+            <p className="font-semibold text-blissfulBlue-200">
               2. If you had a day to yourself, what would you most likely choose to do?
             </p>
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="day_to_yourself"
@@ -129,7 +129,7 @@ const Quiz = () => {
             </label>
             <br />
 
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="day_to_yourself"
@@ -141,7 +141,7 @@ const Quiz = () => {
             </label>
             <br />
 
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="day_to_yourself"
@@ -153,7 +153,7 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+          <button type="submit" className="bg-blissfulBlue-100 text-blue-50 py-2 px-4 rounded-md">
             Submit
           </button>
           <br />
@@ -162,8 +162,10 @@ const Quiz = () => {
       {questionTracker === 2 && (
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-semibold text-orange-300 ">3. Which setting appeals to you the most for exploration?</p>
-            <label className="text-orange-300">
+            <p className="font-semibold text-blissfulBlue-200 ">
+              3. Which setting appeals to you the most for exploration?
+            </p>
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="setting"
@@ -174,7 +176,7 @@ const Quiz = () => {
               Cultural District
             </label>
             <br />
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="setting"
@@ -185,7 +187,7 @@ const Quiz = () => {
               Urban Oasis
             </label>
             <br />
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="setting"
@@ -197,7 +199,7 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+          <button type="submit" className="bg-blissfulBlue-100 text-blue-50 py-2 px-4 rounded-md">
             Submit
           </button>
           <br />
@@ -206,10 +208,10 @@ const Quiz = () => {
       {questionTracker === 3 && (
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-semibold text-orange-300">
+            <p className="font-semibold text-blissfulBlue-200">
               4. Which of these is the most important part of taking a break?
             </p>
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="break"
@@ -220,7 +222,7 @@ const Quiz = () => {
               Spending time with others and being able to enjoy new experiences
             </label>
             <br />
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="break"
@@ -231,7 +233,7 @@ const Quiz = () => {
               Having to do minimal work and being able to enjoy simple luxuries
             </label>
             <br />
-            <label className="text-orange-300">
+            <label className="text-blissfulBlue-200">
               <input
                 type="radio"
                 name="break"
@@ -243,7 +245,7 @@ const Quiz = () => {
             </label>
           </div>
           <br />
-          <button type="submit" className="bg-orange-500 text-orange-50 py-2 px-4 rounded-md">
+          <button type="submit" className="bg-blissfulBlue-100 text-blue-50 py-2 px-4 rounded-md">
             Submit
           </button>
           <br />
@@ -251,52 +253,51 @@ const Quiz = () => {
       )}
       {questionTracker === 4 && (
         <div>
-          <h3 className="text-orange-300">
+          <h3 className="text-blissfulBlue-200">
             You're ready to travel by your interests! You have {highScoreCategories.length} interest(s)!
-            <h3 />
-            {highScoreCategories.map((interest) => {
-              if (interest === "Culture Traveler") {
-                return (
-                  <h1 className="text-orange-300">
-                    It looks like you're a culture focused traveler-click{" "}
-                    <Link className="text-orange-500 underline" key={interest} to={`/interests/1`}>
-                      here
-                    </Link>{" "}
-                    to find out more!
-                  </h1>
-                );
-              } else if (interest === "Outdoor Traveler") {
-                return (
-                  <h1 className="text-orange-300">
-                    It looks like you're an outdoors focused traveler-click{" "}
-                    <Link className="text-orange-500 underline" key={interest} to={`/interests/2`}>
-                      here
-                    </Link>{" "}
-                    to find out more!
-                  </h1>
-                );
-              } else if (interest === "Relaxing Traveler") {
-                return (
-                  <h1 className="text-orange-300">
-                    It looks like you're a relaxation focused traveler-click{" "}
-                    <Link className="text-orange-500 underline" key={interest} to={`/interests/3`}>
-                      here
-                    </Link>{" "}
-                    to find out more!
-                  </h1>
-                );
-              }
-            })}
-            <br />
-            <button type="button" className="bg-orange-300  text-orange-50 py-2 px-4 rounded-md" onClick={addInterests}>
-              Want to link your results to your profile? Click here!
-            </button>
-            <br />
-            <br />
-            <button type="button" className="bg-orange-400 text-orange-50 py-2 px-4 rounded-md" onClick={refreshPage}>
-              <span>Want to take the quiz again? Reload here!</span>
-            </button>
           </h3>
+          {highScoreCategories.map((interest) => {
+            if (interest === "Culture Traveler") {
+              return (
+                <h1 className="text-blissfulBlue-200">
+                  It looks like you're a culture focused traveler-click{" "}
+                  <Link className="text-blissfulBlue-100 underline" key={interest} to={`/interests/1`}>
+                    here
+                  </Link>{" "}
+                  to find out more!
+                </h1>
+              );
+            } else if (interest === "Outdoor Traveler") {
+              return (
+                <h1 className="text-blissfulBlue-200">
+                  It looks like you're an outdoors focused traveler-click{" "}
+                  <Link className="text-blissfulBlue-100 underline" key={interest} to={`/interests/2`}>
+                    here
+                  </Link>{" "}
+                  to find out more!
+                </h1>
+              );
+            } else if (interest === "Relaxing Traveler") {
+              return (
+                <h1 className="text-blissfulBlue-200">
+                  It looks like you're a relaxation focused traveler-click{" "}
+                  <Link className="text-blue-500 underline" key={interest} to={`/interests/3`}>
+                    here
+                  </Link>{" "}
+                  to find out more!
+                </h1>
+              );
+            }
+          })}
+          <br />
+          <button type="button" className="bg-blue-800  text-blue-50 py-2 px-4 rounded-md" onClick={addInterests}>
+            Want to link your results to your profile? Click here!
+          </button>
+          <br />
+          <br />
+          <button type="button" className="bg-blue-900 text-blue-50 py-2 px-4 rounded-md" onClick={refreshPage}>
+            <span>Want to take the quiz again? Reload here!</span>
+          </button>
         </div>
       )}
     </div>
