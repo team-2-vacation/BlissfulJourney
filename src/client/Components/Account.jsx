@@ -184,4 +184,5 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
     </div>
   );
 };
+
 export default Account;
