@@ -51,18 +51,9 @@ const Interest = () => {
         <section className="md:h-full flex items-center text-gray-600">
             <div className="container px-3 py-4 mx-auto">
                 <div className="text-center mb-12">
-                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between mb-12">
-                        <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
-                            Explore Interests
-                        </h1>
-                        <div className="flex items-center border-2 border-gray-300 bg-white rounded-lg text-sm">
-                            <input
-                                className="flex-grow h-8 px-5 text-sm focus:outline-none rounded-l-lg"
-                                placeholder="Search for an interest"
-                            />
-                            <button className="text-gray-600 px-4 h-8">X</button>
-                        </div>
-                    </div>
+                    <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
+                        Explore Interests
+                    </h1>
                     {userIsAdmin && (
                         <button
                             onClick={handleAddInterest}
