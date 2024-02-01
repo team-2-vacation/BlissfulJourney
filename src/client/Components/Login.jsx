@@ -33,18 +33,18 @@ const Login = ({setIsAdmin, setToken, setUserId}) => {
 
     return (
         <>
-        <h1>Login</h1>
-        <section id="login_page">
-            <form>
-                <input placeholder="username or email" value={identifier}
-                onChange={(event) => setIdentifier(event.target.value)}/>
+        <div className="flex min-h-full flex-col justify-center pt-10 pb-1 lg:px-8">
+                <h1 className="mt-5 text-center text-4xl font-bold leading-9 text-white">Sign In</h1>
+        </div>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border-s-white">
+            <form className="space-y-4">
+                <input className="rounded-md w-2/3 leading-loose" placeholder="Username or Email" value={identifier} onChange={(event) => setIdentifier(event.target.value)}/>
                 <br />
-                <input type="password" placeholder="password" value={password}
-                onChange={(event) => setPassword(event.target.value)}/>
+                <input className="rounded-md w-2/3 leading-loose" type="password" placeholder="Password" value={password}onChange={(event) => setPassword(event.target.value)}/>
                 <br />
-                <button onClick={loginHandle}>Log In</button>
             </form>
-        </section>
+                <button className="rounded-lg w-1/2 mt-10 text-center text-xl font-bold leading-normal text-black bg-white" onClick={loginHandle}>Log In</button>
+        </div>
         </>
 )};
 export default Login;

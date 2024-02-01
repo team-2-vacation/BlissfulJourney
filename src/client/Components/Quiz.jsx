@@ -272,6 +272,7 @@ const Quiz = () => {
                 <h1 className="text-blissfulBlue-200">
                   It looks like you're an outdoors focused traveler-click{" "}
                   <Link className="text-blissfulBlue-100 underline" key={interest} to={`/interests/2`}>
+
                     here
                   </Link>{" "}
                   to find out more!

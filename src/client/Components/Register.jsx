@@ -1,36 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Register =  ( {setToken} ) => {
+const Register = ({ setToken, setIsAdmin, setUserId }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data: token } = await axios.post("/auth/register", {
+      const { data } = await axios.post("/auth/register", {
         email,
         username,
         password,
         firstName,
         lastName
-      })
-      localStorage.setItem("TOKEN", token.token);
+      });
+      localStorage.setItem("TOKEN", data.token);
+      localStorage.setItem("Admin", data.admin);
+      localStorage.setItem("Id", data.id);
       setToken(window.localStorage.getItem("TOKEN") || null);
+      setIsAdmin(window.localStorage.getItem("Admin") || null);
+      setUserId(window.localStorage.getItem("Id") || null);
+      navigate('/')
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <>
       <h2>Register</h2>
       <form>
-        <label>Username:
-          <input type="text" value={username} onChange={(e => setUsername(e.target.value))}/>
+        <label>
+          Username:
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
         <br />
         <label>
@@ -53,9 +62,11 @@ const Register =  ( {setToken} ) => {
           <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>
         <br />
-        <button onClick={handleRegister} type="submit">Register</button>
+        <button onClick={handleRegister} type="submit">
+          Register
+        </button>
       </form>
     </>
   );
-}
+};
 export default Register;

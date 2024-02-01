@@ -1,6 +1,6 @@
 const prisma = require("./client");
 
-const createDestinations = async(name, country, description, time_to_visit, average_cost, imageURL, currency, language) => {
+const createDestinations = async(name, country, description, time_to_visit, average_cost, imageURL, currency, language, externalURL) => {
     const destination = await prisma.destination.create({
         data: {
             name,
@@ -10,7 +10,8 @@ const createDestinations = async(name, country, description, time_to_visit, aver
             average_cost: +average_cost,
             imageURL,
             currency,
-            language
+            language,
+            externalURL
         }
     })
     return destination;
