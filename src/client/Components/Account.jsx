@@ -129,39 +129,38 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
         {showUpdateForm && (
           <form className="mt-4">
             <label className="block text-lg mb-2">
-              Username
+              Username |
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="border-2 border-gray-300 px-4 py-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                className="border-2 border-gray-300 px-4 py-2 w-center rounded-md focus:outline-none focus:ring focus:border-blue-500"
               />
             </label>
             <label className="block text-lg mb-2">
-              First Name
-              <input
+              First Name |
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="border-2 border-gray-300 px-4 py-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                className="border-2 border-gray-300 px-4 py-2 w-center rounded-md focus:outline-none focus:ring focus:border-blue-500"
               />
             </label>
             <label className="block text-lg mb-2">
-              Last Name
+              Last Name |
               <input
                 type="text"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="border-2 border-gray-300 px-4 py-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                className="border-2 border-gray-300 px-4 py-2 w-center rounded-md focus:outline-none focus:ring focus:border-blue-500"
               />
             </label>
             <label className="block text-lg mb-2">
-              Email
+              User Email |
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="border-2 border-gray-300 px-4 py-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-500"
+                className="border-2 border-gray-300 px-4 py-2 w-center rounded-md focus:outline-none focus:ring focus:border-blue-500"
               />
             </label>
             <br />
