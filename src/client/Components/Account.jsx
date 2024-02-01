@@ -139,6 +139,7 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
             </label>
             <label className="block text-lg mb-2">
               First Name |
+              <input
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -183,5 +184,4 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
     </div>
   );
 };
-
 export default Account;
