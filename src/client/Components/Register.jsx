@@ -8,9 +8,8 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
   const navigate = useNavigate();
-
+  
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -33,39 +32,68 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
     }
   };
 
+  const showPass = () => {
+    const pass = document.getElementById('password')
+    if (pass.type === "password"){
+      pass.type = "text"
+    }
+    else {
+      pass.type = "password"
+    }
+  }
+
   return (
     <>
-      <h2>Register</h2>
-      <form>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          First Name:
-          <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-        </label>
-        <br />
-        <button onClick={handleRegister} type="submit">
-          Register
-        </button>
-      </form>
+      <div className="flex min-h-full flex-col justify-center pt-10 pb-1 lg:px-8">
+        <h1 className="mt-5 text-center text-4xl font-bold leading-9 text-white">Create an Account</h1>
+      </div>
+
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="my-10 space-y-10" onSubmit={handleRegister}>
+          <label className="text-md font-medium leading-loose">
+            Username:
+            <br/>
+            <input className="rounded-md w-2/3" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required/>
+          </label>
+            <br/>
+
+          <label className="text-md font-medium leading-loose">
+            Password:
+            <br/>
+            <input className="rounded-md w-2/3" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+          </label>
+          <br/>
+
+          <label className="text-md font-medium leading-loose">
+            Show Password
+          <input type="checkbox" onClick={showPass}/>
+          </label>
+            <br/>
+
+          <label className="text-md font-medium leading-loose">
+            Email:
+            <br/>
+            <input className="rounded-md w-2/3" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          </label>
+            <br/>
+
+          <label className="text-md font-medium leading-loose">
+            First Name:
+            <br/>
+            <input className="rounded-md w-2/3" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
+          </label>
+            <br/>
+
+          <label className="text-md font-medium leading-loose">
+            Last Name:
+            <br/>
+            <input className="rounded-md w-2/3" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
+          </label>
+            <br/>
+
+          <button className="rounded-lg w-1/2 text-center text-xl font-bold leading-normal text-black bg-white" type="submit">Create Account</button>
+        </form>
+      </div>
     </>
   );
 };
