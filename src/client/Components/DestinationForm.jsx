@@ -10,7 +10,8 @@ const DestinationForm = ({ onClose, destinationToEdit }) => {
     const [imageURL, setImageURL] = useState("");
     const [currency, setCurrency] = useState("");
     const [language, setLanguage] = useState("");
-
+    const [externalURL, setExternalURL] = useState("");
+    
     useEffect(() => {
         if (destinationToEdit) {
             setName(destinationToEdit.name);
@@ -19,6 +20,7 @@ const DestinationForm = ({ onClose, destinationToEdit }) => {
             setTimeToVisit(destinationToEdit.time_to_visit);
             setAverageCost(destinationToEdit.average_cost);
             setImageURL(destinationToEdit.imageURL);
+            setExternalURL(destinationToEdit.externalURL)
             setCurrency(destinationToEdit.currency);
             setLanguage(destinationToEdit.language);
         }
@@ -33,6 +35,7 @@ const DestinationForm = ({ onClose, destinationToEdit }) => {
             time_to_visit: timeToVisit,
             average_cost: +averageCost,
             imageURL,
+            externalURL,
             currency,
             language
         };
@@ -78,9 +81,14 @@ const DestinationForm = ({ onClose, destinationToEdit }) => {
                         <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="number" id="average_cost" placeholder="0.00" value={averageCost} onChange={(e) => setAverageCost(e.target.value)} />
                     </div>
 
-                    <div className="md:col-span-2">
+                    <div>
                         <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="imageURL">Image URL:</label>
                         <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="imageURL" placeholder="optional" value={imageURL} onChange={(e) => setImageURL(e.target.value)} />
+                    </div>
+
+                    <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-700" htmlFor="externalURL">External URL:</label>
+                        <input className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" type="text" id="externalURL" placeholder="optional" value={externalURL} onChange={(e) => setExternalURL(e.target.value)} />
                     </div>
 
                     <div>
