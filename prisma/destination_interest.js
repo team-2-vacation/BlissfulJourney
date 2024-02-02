@@ -26,5 +26,20 @@ const getDestinationInterests = async (destinationId, interestId) => {
     });
     return existingJoin;
 }
+const getInterestWithDestinations = async (interestId) => {
+    return await prisma.interest.findUnique({
+        where: { id: interestId },
+        include: {
+            destinations: {
+                include: {
+                    Destination: true, 
+                },
+            },
+        },
+    });
+};
 
-module.exports = { getDestinationInterests, createDestinationInterest, getAllDestinationInterests }
+
+
+
+module.exports = { getDestinationInterests, createDestinationInterest, getAllDestinationInterests, getInterestWithDestinations }
