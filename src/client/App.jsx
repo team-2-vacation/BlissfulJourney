@@ -14,7 +14,7 @@ import Navbar from "./Components/Navbar.jsx"
 import Register from "./Components/Register.jsx";
 import Wishlist from "./Components/Wishlist.jsx";
 import SingleAttraction from "./Components/SingleAttraction.jsx";
-
+import Users from "./Components/Users.jsx";
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(
@@ -40,6 +40,7 @@ const App = () => {
         <Route path='/quiz' element={<Quiz />} />
         <Route path='/register' element={<Register setIsAdmin={setIsAdmin} setToken={setToken} setUserId={setUserId} />} />
         <Route path='/wishlist' element={<Wishlist token={token} />} />
+        <Route path='/users' element={<Users isAdmin={isAdmin} />} />
       </Routes>
     </>
   );
