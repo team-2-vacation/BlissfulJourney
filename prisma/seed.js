@@ -43,11 +43,11 @@ const moscow = await createDestinations("Moscow", "Russia", `Moscow, the capital
 const beijing = await createDestinations("Beijing", "China", `Beijing, the capital of China, is a city where ancient history seamlessly intertwines with modern innovation, offering a captivating journey through time. The historic Forbidden City, an imperial palace complex, reveals the splendor of China's imperial past, while the iconic Temple of Heaven stands as a testament to architectural brilliance. The Great Wall of China, a world wonder, winds its way through the mountains surrounding the city, offering breathtaking views of the surrounding landscapes. Beijing's bustling markets, vibrant street life, and contemporary landmarks like the Bird's Nest stadium create a dynamic cityscape that captures the essence of China's cultural richness and rapid development.`, "April - June and September - October", 210, "https://i.imgur.com/cElmnDw.jpeg", "Chinese Yuan Renminbi, CNY, (¥)", "Mandarin and Putonghua", "https://english.visitbeijing.com.cn")
 const queenstown = await createDestinations("Queenstown", "New Zealand", `Nestled within New Zealand's Southern Alps, Queenstown stands as a breathtaking jewel and a hub for adrenaline-fueled adventures. Surrounded by crystal-clear lakes and dramatic mountain peaks, the town is renowned for its stunning landscapes that have captivated filmmakers and travelers alike. Queenstown is a haven for outdoor enthusiasts, offering a plethora of activities such as bungee jumping, skiing, hiking, and jet boating, ensuring an adrenaline rush for thrill-seekers. Beyond the adrenaline, the town also boasts a vibrant arts and culinary scene, with charming streets lined with shops, galleries, and restaurants, making Queenstown a well-rounded destination for both adventure and relaxation.`, "December - February", 380, "https://i.imgur.com/G4wF9Sk.jpeg", "New Zealand Dollar, NZD, ($)", "English", "https://www.queenstownnz.co.nz")
 
-const eiffel = await createAttractions("Eiffel Tower", "https://i.imgur.com/romvYx4.jpeg", paris.id)
-const louvre = await createAttractions("Louvre", "https://i.imgur.com/yVYUYIB.jpeg", paris.id)
-const notreDame = await createAttractions("Notre Dame", "https://i.imgur.com/qNhgLHI.jpeg", paris.id)
+const eiffel = await createAttractions("Eiffel Tower", "https://i.imgur.com/e2btpbz.jpeg", paris.id)
+const louvre = await createAttractions("Louvre", "https://i.imgur.com/Pi7Os9M.jpeg", paris.id)
+const notreDame = await createAttractions("Notre Dame", "https://i.imgur.com/CDGOPBQ.jpeg", paris.id)
 
-const temple = await createAttractions("Uluwatu Temple", "https://i.imgur.com/txhMihx.jpeg", bali.id)
+const temple = await createAttractions("Uluwatu Temple", "https://i.imgur.com/3c0tAvs.jpeg", bali.id)
 const monkey = await createAttractions("Ubud Monkey Forest", "https://i.imgur.com/v8zb4nN.jpeg", bali.id)
 const terrace = await createAttractions("Tegallalang Rice Terraces", "https://i.imgur.com/7vpNMHc.jpeg", bali.id)
 
