@@ -56,15 +56,15 @@ const SingleDestination = () => {
     const tabContent = () => {
         switch (activeTab) {
             case 'description':
-                return <p className="text-left text-base">{destination.description}</p>;
+                return <p className="text-left text-base text-gray-900">{destination.description}</p>;
             case 'bestTimeToVisit':
-                return <p className="text-base">{destination.time_to_visit}</p>;
+                return <p className="text-base text-gray-900">{destination.time_to_visit}</p>;
             case 'averageCost':
-                return <p className="text-base">{destination.average_cost}</p>;
+                return <p className="text-base text-gray-900">{destination.average_cost}</p>;
             case 'currency':
-                return <p className="text-base">{destination.currency}</p>;
+                return <p className="text-base text-gray-900">{destination.currency}</p>;
             case 'language':
-                return <p className="text-base">{destination.language}</p>;
+                return <p className="text-base text-gray-900">{destination.language}</p>;
             default:
                 return null;
         }
@@ -108,7 +108,7 @@ const SingleDestination = () => {
                     </div>
 
                     <div className="bg-white rounded-lg p-6 mb-6">
-                        <h2 className="text-3xl font-bold mb-2">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}</h2>
+                        <h2 className="text-3xl font-bold mb-2 text-gray-900">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')}</h2>
                         {tabContent()}
                     </div>
                     <div className="flex flex-wrap -m-4">
