@@ -51,7 +51,7 @@ const Interest = () => {
         <section className="md:h-full flex items-center text-gray-600">
             <div className="container px-3 py-4 mx-auto">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
+                    <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
                         Explore Interests
                     </h1>
                     {userIsAdmin && (
@@ -76,7 +76,7 @@ const Interest = () => {
                                 </Link>
                                 <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
                                     <Link to={`/interests/${interest.id}`}>
-                                        <h3 className="text-2xl font-semibold mb-3">{interest.name}</h3>
+                                        <h3 className="text-2xl font-semibold mb-3 text-gray-200">{interest.name}</h3>
                                     </Link>
                                     {userIsAdmin && (
                                         <div className="flex justify-between mt-4">
