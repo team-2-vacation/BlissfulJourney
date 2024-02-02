@@ -24,10 +24,10 @@ function SingleAttraction() {
 
   return (
     <div>
-      <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
+      <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
         Attraction name: {attraction?.name}
       </h1>
-     {destination && <h1>Located in {destination.name}, {destination.country}</h1>}
+     {destination && <h1 className= "text-gray-200">Located in {destination.name}, {destination.country}</h1>}
       {attraction?.imageURL && <img  className="mx-auto object-cover m-4" src={attraction.imageURL} alt={attraction.name} />} 
     </div>
   );

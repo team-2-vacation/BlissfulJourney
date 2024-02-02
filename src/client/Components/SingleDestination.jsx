@@ -90,19 +90,19 @@ const SingleDestination = () => {
             <div className="container mx-auto p-4">
                 <div className="my-6">
                     <div className="flex ">
-                        <button className={`py-2 px-4 text-lg  ${activeTab === 'description' ? ' font-medium border-b-2' : ''}`} onClick={() => setActiveTab('description')}>
+                        <button className={`py-2 px-4 text-lg text-white ${activeTab === 'description' ? ' font-bold ' : ''}`} onClick={() => setActiveTab('description')}>
                             Description
                         </button>
-                        <button className={`py-2 px-4 text-lg ${activeTab === 'bestTimeToVisit' ? 'font-medium border-b-2' : ''}`} onClick={() => setActiveTab('bestTimeToVisit')}>
+                        <button className={`py-2 px-4 text-lg text-white ${activeTab === 'bestTimeToVisit' ? 'font-bold' : ''}`} onClick={() => setActiveTab('bestTimeToVisit')}>
                             Best Time to Visit
                         </button>
-                        <button className={`py-2 px-4 text-lg ${activeTab === 'averageCost' ? 'font-medium border-b-2' : ''}`} onClick={() => setActiveTab('averageCost')}>
+                        <button className={`py-2 px-4 text-lg text-white ${activeTab === 'averageCost' ? 'font-bold' : ''}`} onClick={() => setActiveTab('averageCost')}>
                             Average Cost
                         </button>
-                        <button className={`py-2 px-4 text-lg ${activeTab === 'currency' ? ' font-medium border-b-2' : ''}`} onClick={() => setActiveTab('currency')}>
+                        <button className={`py-2 px-4 text-lg text-white ${activeTab === 'currency' ? ' font-bold' : ''}`} onClick={() => setActiveTab('currency')}>
                             Currency
                         </button>
-                        <button className={`py-2 px-4 text-lg ${activeTab === 'language' ? 'font-medium border-b-2' : ''}`} onClick={() => setActiveTab('language')}>
+                        <button className={`py-2 px-4 text-lg text-white ${activeTab === 'language' ? 'font-bold' : ''}`} onClick={() => setActiveTab('language')}>
                             Language
                         </button>
                     </div>
@@ -122,7 +122,7 @@ const SingleDestination = () => {
                                         className="w-full h-64 object-cover"
                                     />
                                     <div className="p-4">
-                                        <h3 className="font-semibold text-lg">{attraction.name}</h3>
+                                        <h3 className="font-semibold text-lg text-gray-200">{attraction.name}</h3>
                                     </div>
                                 </Link>
                             </div>

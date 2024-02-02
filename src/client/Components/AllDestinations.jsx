@@ -60,7 +60,7 @@ const Destination = () => {
                 <div className="container px-3 py-4 mx-auto">
                     <div className="text-center mb-12">
                         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between mb-12">
-                            <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3 md:mb-0 md:flex-grow text-center">Explore the World</h1>
+                            <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3 md:mb-0 md:flex-grow text-center">Explore the World</h1>
                             <div className="flex items-center border-2 border-gray-300 bg-white rounded-lg text-sm">
                                 <input
                                     className="flex-grow h-8 px-5 text-sm focus:outline-none rounded-l-lg"
@@ -98,7 +98,7 @@ const Destination = () => {
                                     </Link>
                                     <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
                                         <Link to={`/destinations/${destination.id}`}>
-                                            <h3 className="text-2xl font-semibold mb-3">{destination.name}</h3>
+                                            <h3 className="text-2xl font-semibold mb-3 text-gray-200">{destination.name}</h3>
                                         </Link>
                                         {userIsAdmin && (
                                             <div className="flex justify-between mt-4">

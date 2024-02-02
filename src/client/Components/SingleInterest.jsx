@@ -26,10 +26,10 @@ const SingleInterest = () => {
     return (
         <section className="md:h-full flex items-center text-gray-600">
             <div className="container mx-auto p-4">
-                <h1 className="text-4xl md:text-5xl text-gray-700 font-semibold mb-3">
+                <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3">
                     {interest.name}
                 </h1>
-                <p className="mb-4">
+                <p className="mb-4 text-gray-200">
                     <strong>Description:</strong> {interest.description}
                 </p>
                 {interest.imageURL && (
@@ -57,6 +57,22 @@ const SingleInterest = () => {
                                         <h3 className="font-semibold text-lg">{destination.name}</h3>
                                     </div>
                                 </Link>
+                                <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
+                                    <Link to={`/destinations/${destination.id}`}>
+                                        <h3 className="text-2xl font-semibold mb-3 text-center text-gray-200">
+                                            Destination: {destination.name}
+                                        </h3>
+                                    </Link>
+                                    {destination.imageURL && (
+                                        <img
+                                            src={destination.imageURL}
+                                            alt={destination.name}
+                                            style={{ width: "100px", height: "100px" }}
+                                            className="mb-2 rounded mx-auto"
+                                        />
+                                    )}
+                                </div>
+
                             </div>
                         </div>
                     ))}
