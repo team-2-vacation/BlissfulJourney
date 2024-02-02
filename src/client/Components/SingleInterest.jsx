@@ -40,13 +40,13 @@ const SingleInterest = () => {
                         style={{ maxHeight: "300px" }}
                     />
                 )}
-                 <h2 className="text-3xl text-gray-700 font-semibold mb-6">
+                 <h2 className="text-3xl text-gray-200 font-semibold mb-6">
                     Explore Destinations by Interest
                 </h2>
                 <div className="flex flex-wrap -m-4">
                     {filteredDestinations && filteredDestinations.map((destination, index) => (
                         <div key={index} className="p-4 md:w-1/2 xl:w-1/3">
-                            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 ease-in-out">
+                            <div className="border border-gray-200 text-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 ease-in-out">
                                 <Link to={`/destinations/${destination.id}`}>
                                     <img
                                         src={destination.imageURL}
@@ -54,25 +54,9 @@ const SingleInterest = () => {
                                         className="w-full h-64 object-cover"
                                     />
                                     <div className="p-4">
-                                        <h3 className="font-semibold text-lg">{destination.name}</h3>
+                                        <h3 className="font-semibold text-lg text-gray-200 ">{destination.name}</h3>
                                     </div>
                                 </Link>
-                                <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
-                                    <Link to={`/destinations/${destination.id}`}>
-                                        <h3 className="text-2xl font-semibold mb-3 text-center text-gray-200">
-                                            Destination: {destination.name}
-                                        </h3>
-                                    </Link>
-                                    {destination.imageURL && (
-                                        <img
-                                            src={destination.imageURL}
-                                            alt={destination.name}
-                                            style={{ width: "100px", height: "100px" }}
-                                            className="mb-2 rounded mx-auto"
-                                        />
-                                    )}
-                                </div>
-
                             </div>
                         </div>
                     ))}
