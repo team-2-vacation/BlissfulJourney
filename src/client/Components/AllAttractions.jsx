@@ -1,74 +1,90 @@
 import React, { useState, useEffect } from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Attractions = () => {
-    const [search, setSearch] = useState("");
-    const [attractions, setAttractions] = useState([]); 
-
-    const filteredAttractions = attractions.filter(attraction =>
-        attraction.name.toLowerCase().includes(search.toLowerCase())
-    );
+    const [attractions, setAttractions] = useState([]);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
         const getAttraction = async () => {
             try {
                 const { data: foundAttraction } = await axios.get(`/api/attractions`);
                 setAttractions(foundAttraction);
+                setCurrentSlide(0);
             } catch (error) {
                 console.log(error);
             }
-        }
+        };
         getAttraction();
     }, []);
+
+    const nextSlide = () => {
+        setCurrentSlide(slide => (slide + 1) % attractions.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide(slide => (slide - 1 + attractions.length) % attractions.length);
+    };
+
+    const jumpToSlide = (index) => {
+        setCurrentSlide(index);
+    };
+
+    useEffect(() => {
+        const timer = setInterval(nextSlide, 3000);
+        return () => clearInterval(timer);
+    }, [attractions.length]);
 
     return (
         <>
             <section className="md:h-full flex items-center text-gray-600">
                 <div className="container px-3 py-4 mx-auto">
                     <div className="text-center mb-12">
-                            <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3 md:mb-0 md:flex-grow text-center">
-Discover the Attractions</h1>
-                        <div className="flex flex-col md:flex-row items-center justify-center md:justify-end mb-12">
-                            <div className="flex items-center border-2 border-gray-300 bg-white rounded-lg text-sm">
-                                <input
-                                    className="flex-grow h-8 px-5 text-sm focus:outline-none rounded-l-lg"
-                                    placeholder="Search for an attraction"
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                />
-                                {search && (
-                                    <button onClick={() => setSearch("")} className="text-gray-600 px-4 h-8">
-                                        X
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                        <div className="flex flex-wrap -m-4">
-                            {filteredAttractions.map(attraction => (
-                                <div key={attraction.id} className="p-4 sm:w-1/2 lg:w-1/3">
-                                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                                        <Link to={`/attractions/${attraction.id}`}>
-                                            <img
-                                                className="lg:h-72 md:h-48 w-full object-cover object-center transform hover:scale-105 transition duration-300"
-                                                src={attraction.imageURL}
-                                                alt={`attraction ${attraction.name}`}
-                                            />
-                                        </Link>
-                                        <div className="p-6 hover:bg-gray-300 hover:text-white transition duration-300 ease-in">
-                                            <Link to={`/attractions/${attraction.id}`}>
-                                                <h3 className="text-2xl font-semibold mb-3 text-gray-200">{attraction.name}</h3>
-                                            </Link>
+                        <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3 md:mb-4 md:flex-grow">
+                            Discover the Attractions
+                        </h1>
+                        {attractions.length > 0 && (
+                            <div className="relative">
+                                <div className="aspect-w-16 aspect-h-9">
+                                        <img
+                                            className="w-full h-full object-cover"
+                                            style={{ maxHeight: "500px" }}
+                                            src={attractions[currentSlide].imageURL}
+                                            alt={`attraction ${attractions[currentSlide].name}`}
+                                        />
+                                        <div className="absolute inset-0 flex items-end justify-center pb-5">
+                                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4 text-center">
+                                                <h2 className="text-2xl text-white font-bold mb-4">{attractions[currentSlide].name}</h2>
+                                            </div>
                                         </div>
-                                    </div>
+                                  
                                 </div>
-                            ))}
-                        </div>
+                                <div className="absolute inset-0 flex justify-between items-center px-3 py-2">
+                                    <button onClick={prevSlide} className="text-white text-2xl">
+                                        <IoIosArrowBack />
+                                    </button>
+                                    <button onClick={nextSlide} className="text-white text-2xl">
+                                        <IoIosArrowForward />
+                                    </button>
+                                </div>
+                                <div className="absolute bottom-0 left-0 right-0 flex justify-center p-4">
+                                    {attractions.map((attraction, index) => (
+                                        <span
+                                            key={index}
+                                            className={`inline-block h-1 w-2 mx-1 cursor-pointer rounded-full ${currentSlide === index ? 'bg-white' : 'bg-gray-400'}`}
+                                            onClick={() => jumpToSlide(index)}
+                                        ></span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>
         </>
     );
-}
+};
 
 export default Attractions;

@@ -21,7 +21,7 @@ return (
         <div>
             <h1 className="text-4xl md:text-5xl text-gray-200 font-semibold mb-3 md:mb-0 md:flex-grow text-center">Users</h1>
             <br/>
-            <ul className="space-y-10">
+            <ul className="space-y-10 text-gray-200">
             {users.map(user => (
                 <li key={user.id}>
                     <p className="leading-loose">{`Username: ${user.username}`}</p>
