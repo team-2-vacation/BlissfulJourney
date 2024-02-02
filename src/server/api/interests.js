@@ -32,6 +32,32 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.get("/:id/destinations", async (req, res, next) => {
+    const interestId = parseInt(req.params.id);
+
+    try {
+        const interestWithDestinations = await prisma.interest.findUnique({
+            where: { id: interestId },
+            include: {
+                destinations: {
+                    include: {
+                        Destination: true,
+                    },
+                },
+            },
+        });
+
+        if (!interestWithDestinations) {
+            return res.status(404).json({ error: "Interest not found" });
+        }
+
+        res.json(interestWithDestinations);
+    } catch (error) {
+        console.error("Error retrieving interest with destinations:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 router.post("/", async (req, res, next) => {
   const { name, imageURL, description } = req.body;
 
@@ -85,4 +111,6 @@ router.delete("/:id", async (req, res, next) => {
       res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+
 module.exports = router;
