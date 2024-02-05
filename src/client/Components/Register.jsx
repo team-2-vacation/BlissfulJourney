@@ -50,41 +50,41 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="my-10 space-y-10" onSubmit={handleRegister}>
-          <label className="text-md font-medium leading-loose">
+          <label className="text-md font-medium leading-loose text-gray-200">
             Username:
             <br/>
             <input className="rounded-md w-2/3" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required/>
           </label>
             <br/>
 
-          <label className="text-md font-medium leading-loose">
+          <label className="text-md font-medium leading-loose text-gray-200">
             Password:
             <br/>
             <input className="rounded-md w-2/3" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
           </label>
           <br/>
 
-          <label className="text-md font-medium leading-loose">
+          <label className="text-md font-medium leading-loose text-gray-200">
             Show Password
           <input type="checkbox" onClick={showPass}/>
           </label>
             <br/>
 
-          <label className="text-md font-medium leading-loose">
+          <label className="text-md font-medium leading-loose text-gray-200">
             Email:
             <br/>
             <input className="rounded-md w-2/3" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
           </label>
             <br/>
 
-          <label className="text-md font-medium leading-loose">
+          <label className="text-md font-medium leading-loose text-gray-200">
             First Name:
             <br/>
             <input className="rounded-md w-2/3" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
           </label>
             <br/>
 
-          <label className="text-md font-medium leading-loose">
+          <label className="text-md font-medium leading-loose text-gray-200">
             Last Name:
             <br/>
             <input className="rounded-md w-2/3" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>

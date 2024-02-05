@@ -47,10 +47,9 @@ const Attractions = () => {
                         </h1>
                         {attractions.length > 0 && (
                             <div className="relative">
-                                <div className="aspect-w-16 aspect-h-9">
+                                <div >
                                         <img
-                                            className="w-full h-full object-cover"
-                                            style={{ maxHeight: "500px" }}
+                                            className="w-full h-[75vh] object-cover"
                                             src={attractions[currentSlide].imageURL}
                                             alt={`attraction ${attractions[currentSlide].name}`}
                                         />
