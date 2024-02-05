@@ -52,7 +52,7 @@ const Login = ({setIsAdmin, setToken, setUserId}) => {
                 <br />
                 <input className="rounded-md w-2/3 leading-loose" type="password" id="password" placeholder="Password" value={password}onChange={(event) => setPassword(event.target.value)}/>
                 <br />
-                <label className="text-md font-medium leading-loose">Show Password
+                <label className="text-md font-medium leading-loose text-gray-200">Show Password
                     <input type="checkbox" onClick={showPass}/>
                 </label>
             </form>
