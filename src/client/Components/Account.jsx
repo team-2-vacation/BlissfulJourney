@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -27,14 +27,10 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
 
   const updateUserHandle = async (e) => {
     e.preventDefault();
-
-    // Validate email before submitting
     if (!emailRegex.test(email)) {
       setIsValidEmail(false);
       return;
     }
-
-    // Reset validation state
     setIsValidEmail(true);
 
     const userId = window.localStorage.getItem("Id");
@@ -108,7 +104,9 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
           <p className="text-2xl font-semibold">My Interests</p>
           {interests?.map((int) => (
             <div key={int.interestId} className="mb-4">
+              <Link className="font-bold underline" to={`/interests/${int.interestId}`}>
               <h2 className="text-xl font-semibold">{int.Interest.name}</h2>
+              </Link>
               <p className="text-base">{int.Interest.description}</p>
               <button className="text-base text-red-500" onClick={() => handleDelete(user.id, int.interestId)}>
                 Remove
