@@ -9,10 +9,19 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const navigate = useNavigate();
-  
+
+  // Regular expression for email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      // Check if the entered email matches the regex
+      if (!emailRegex.test(email)) {
+        console.error("Invalid email format");
+        return;
+      }
+
       const { data } = await axios.post("/auth/register", {
         email,
         username,
@@ -26,21 +35,20 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
       setToken(window.localStorage.getItem("TOKEN") || null);
       setIsAdmin(window.localStorage.getItem("Admin") || null);
       setUserId(window.localStorage.getItem("Id") || null);
-      navigate('/')
+      navigate('/');
     } catch (error) {
       console.error(error);
     }
   };
 
   const showPass = () => {
-    const pass = document.getElementById('password')
-    if (pass.type === "password"){
-      pass.type = "text"
+    const pass = document.getElementById('password');
+    if (pass.type === "password") {
+      pass.type = "text";
+    } else {
+      pass.type = "password";
     }
-    else {
-      pass.type = "password"
-    }
-  }
+  };
 
   return (
     <>
@@ -55,7 +63,7 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
             <br/>
             <input className="rounded-md w-2/3" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required/>
           </label>
-            <br/>
+          <br/>
 
           <label className="text-md font-medium leading-loose">
             Password:
@@ -66,30 +74,39 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
 
           <label className="text-md font-medium leading-loose">
             Show Password
-          <input type="checkbox" onClick={showPass}/>
+            <input type="checkbox" onClick={showPass}/>
           </label>
-            <br/>
+          <br/>
 
           <label className="text-md font-medium leading-loose">
             Email:
             <br/>
-            <input className="rounded-md w-2/3" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+            <input
+              className={`rounded-md w-2/3 ${emailRegex.test(email) ? '' : 'border-red-500'}`}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            {emailRegex.test(email) || email === '' ? null : (
+              <p className="text-red-500 text-xs mt-1">Invalid email format</p>
+            )}
           </label>
-            <br/>
+          <br/>
 
           <label className="text-md font-medium leading-loose">
             First Name:
             <br/>
             <input className="rounded-md w-2/3" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
           </label>
-            <br/>
+          <br/>
 
           <label className="text-md font-medium leading-loose">
             Last Name:
             <br/>
             <input className="rounded-md w-2/3" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
           </label>
-            <br/>
+          <br/>
 
           <button className="rounded-lg w-1/2 text-center text-xl font-bold leading-normal text-black bg-white" type="submit">Create Account</button>
         </form>
@@ -97,4 +114,5 @@ const Register = ({ setToken, setIsAdmin, setUserId }) => {
     </>
   );
 };
+
 export default Register;

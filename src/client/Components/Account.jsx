@@ -11,6 +11,9 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(true);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const logOut = () => {
     localStorage.removeItem("TOKEN");
@@ -24,6 +27,16 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
 
   const updateUserHandle = async (e) => {
     e.preventDefault();
+
+    // Validate email before submitting
+    if (!emailRegex.test(email)) {
+      setIsValidEmail(false);
+      return;
+    }
+
+    // Reset validation state
+    setIsValidEmail(true);
+
     const userId = window.localStorage.getItem("Id");
     try {
       const response = await axios.patch(`/api/users/${userId}`, {
@@ -141,5 +154,6 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
     </div>
   );
 };
+
 
 export default Account;
