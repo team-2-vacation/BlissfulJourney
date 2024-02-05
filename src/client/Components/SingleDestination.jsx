@@ -58,13 +58,13 @@ const SingleDestination = () => {
             case 'description':
                 return <p className="text-left text-base text-gray-900">{destination.description}</p>;
             case 'bestTimeToVisit':
-                return <p className="text-base text-gray-900">{destination.time_to_visit}</p>;
+                return <p className="text-base text-gray-900">Peak tourism for {destination.name} is {destination.time_to_visit}.</p>;
             case 'averageCost':
-                return <p className="text-base text-gray-900">{destination.average_cost}</p>;
+                return <p className="text-base text-gray-900">The average cost for a midrange traveler is ${destination.average_cost} per day.</p>;
             case 'currency':
-                return <p className="text-base text-gray-900">{destination.currency}</p>;
+                return <p className="text-base text-gray-900">The currency used in {destination.name} is the {destination.currency}.</p>;
             case 'language':
-                return <p className="text-base text-gray-900">{destination.language}</p>;
+                return <p className="text-base text-gray-900">The official language(s) of {destination.name}: {destination.language}.</p>;
             default:
                 return null;
         }
