@@ -119,32 +119,61 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
         <button onClick={logOut} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
           Log Out
         </button>
-        <button
-          onClick={() => setShowUpdateForm(true)}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-        >
-          Update Profile
-        </button>
+        <br />
+        {!showUpdateForm && (
+          <button
+            onClick={() => setShowUpdateForm(true)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          >
+            Update Profile
+          </button>
+        )}
         {showUpdateForm && (
           <form className="mt-4">
             <label className="block text-lg mb-2">Username</label>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="input-field" />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="input-field"
+              style={{ color: "#999" }}
+            />
             <label className="block text-lg mb-2">First Name</label>
             <input
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               className="input-field"
+              style={{ color: "#999" }}
             />
             <label className="block text-lg mb-2">Last Name</label>
-            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="input-field" />
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className="input-field"
+              style={{ color: "#999" }}
+            />
             <label className="block text-lg mb-2">User Email</label>
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="input-field" />
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-field"
+              style={{ color: "#999" }}
+            />
             <div className="mt-4">
-              <button onClick={() => setShowUpdateForm(false)} className="cancel-button">
+              <button
+                onClick={() => setShowUpdateForm(false)}
+                className="cancel-button bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              >
                 Cancel
               </button>
-              <button onClick={updateUserHandle} className="update-button">
+              <br />
+              <button
+                onClick={updateUserHandle}
+                className="update-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+              >
                 Update
               </button>
             </div>
