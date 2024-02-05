@@ -27,14 +27,10 @@ const Account = ({ setToken, setIsAdmin, setUserId }) => {
 
   const updateUserHandle = async (e) => {
     e.preventDefault();
-
-    // Validate email before submitting
     if (!emailRegex.test(email)) {
       setIsValidEmail(false);
       return;
     }
-
-    // Reset validation state
     setIsValidEmail(true);
 
     const userId = window.localStorage.getItem("Id");
