@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/blissful_journey_logo.jpeg"
+import logo from '../assets/blissful_journey_logo.png';
 import { useState } from 'react';
 
 const Navbar = ({ token, isAdmin }) => {
